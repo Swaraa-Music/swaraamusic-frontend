@@ -15,7 +15,7 @@ const Contact = () => {
   const [from, setFrom] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isSent, setIsSent] = useState(true);
+  const [isSent, setIsSent] = useState(false);
 
   // Contact Submiy Handle
 
@@ -37,12 +37,10 @@ const Contact = () => {
         setIsLoading(false);
       } else {
         setErrorMessage(response.data.error);
-        console.log(response.data);
         setIsLoading(false);
       }
     } catch (error) {
       setErrorMessage("Unknown Problem");
-      console.log(error.message);
       setIsLoading(false);
     }
   };
