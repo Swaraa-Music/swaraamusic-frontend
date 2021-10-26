@@ -15,7 +15,7 @@ const Contact = () => {
   const [from, setFrom] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isSent, setIsSent] = useState(false);
+  const [isSent, setIsSent] = useState(true);
 
   // Contact Submiy Handle
 
@@ -68,6 +68,7 @@ const Contact = () => {
               <button className="btn-burgundy" onClick={() => setIsSent(false)}>
                 Send Another ?
               </button>
+              <div className="contact__spacer"></div>
             </>
           ) : (
             <>

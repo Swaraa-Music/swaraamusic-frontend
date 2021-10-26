@@ -476,7 +476,10 @@
   justify-content: space-between;
   padding: 50px 80px 80px 80px;
   margin-bottom: 50px;
-  min-height: 100vh;
+}
+
+.contact__spacer {
+  height: 100vh;
 }
 
 .contact__info > p {
