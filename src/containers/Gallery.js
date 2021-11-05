@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// Compoenents
+// Components
 import Loader from "../components/Utility/Loader";
 
 const Gallery = () => {

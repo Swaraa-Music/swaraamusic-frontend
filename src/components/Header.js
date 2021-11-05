@@ -12,16 +12,16 @@ const Header = () => {
       <div className="header__logo__container">
         <div>
           <a href="https://www.facebook.com/swaraamusiclive/" target="_blank">
-            <i class="fab fa-facebook"></i>
+            <i className="fab fa-facebook"></i>
           </a>
           <a
             href="https://www.instagram.com/swaraamusiclive/?hl=fr"
             target="_blank"
           >
-            <i class="fab fa-instagram"></i>
+            <i className="fab fa-instagram"></i>
           </a>
           <a href="https://twitter.com/swaraamusiclive" target="_blank">
-            <i class="fab fa-twitter"></i>
+            <i className="fab fa-twitter"></i>
           </a>
         </div>
 

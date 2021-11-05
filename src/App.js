@@ -12,6 +12,7 @@ import About from "./containers/About";
 import Gallery from "./containers/Gallery";
 import Videos from "./containers/Videos";
 import Contact from "./containers/Contact";
+import Admin from "./containers/Admin";
 
 // Components
 import Header from "./components/Header";
@@ -25,6 +26,9 @@ function App() {
     <Router>
       <Header />
       <Switch>
+        <Route path="/admin">
+          <Admin />
+        </Route>
         <Route path="/contact">
           <Contact />
         </Route>
