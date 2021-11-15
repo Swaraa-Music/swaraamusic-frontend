@@ -262,7 +262,6 @@
   align-items: center;
   color: white;
   font-family: var(--ff--common);
-  font-style: italic;
 }
 
 .footer__container img {
@@ -639,6 +638,93 @@
   margin: 30px 0;
 }
 
+/* Services */
+.services {
+  min-height: 100vh;
+}
+
+.services__container {
+  padding-top: 50px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+}
+
+.service {
+  position: relative;
+  width: 25%;
+  margin: 20px;
+}
+
+.service > img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.service > img:hover {
+  cursor: pointer;
+  filter: brightness(0.5);
+}
+
+.service > h1 {
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  font-family: var(--ff--common);
+  color: white;
+  /* background: rgb(85, 50, 130);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(85, 50, 130, 1) 0%,
+    rgba(190, 59, 126, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(85, 50, 130, 1) 0%,
+    rgba(190, 59, 126, 1) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(85, 50, 130, 1) 0%,
+    rgba(190, 59, 126, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#553282",endColorstr="#be3b7e",GradientType=1); */
+  background-color: var(--clr--burgundy);
+  z-index: 2;
+}
+
+/* Videos */
+
+.videos {
+  min-height: 100vh;
+}
+
+.videos__container {
+  padding-top: 30px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+  justify-content: center;
+}
+
+.videos__container > iframe {
+  margin: 20px;
+  width: 40%;
+  height: 300px;
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 768px) {
@@ -768,4 +854,17 @@
     margin: 1%;
     
   } */
+
+  /* Services */
+
+  .service {
+    width: 40%;
+  }
+
+  /* Videos */
+  .videos__container > iframe {
+    margin: 20px;
+    width: 90%;
+    height: 250px;
+  }
 }

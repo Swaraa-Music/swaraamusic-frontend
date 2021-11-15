@@ -23,6 +23,12 @@ const Header = () => {
           <a href="https://twitter.com/swaraamusiclive" target="_blank">
             <i className="fab fa-twitter"></i>
           </a>
+          <a
+            href="https://www.youtube.com/channel/UC8bEYJQYbbdHCGtss6BQZSg"
+            target="_blank"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
         </div>
 
         <img
@@ -78,6 +84,16 @@ const Header = () => {
             }
           >
             VIDEOS
+          </Link>
+          <Link
+            to="/services"
+            className={
+              location.pathname === "/services"
+                ? "header__clicked"
+                : "underline-grow"
+            }
+          >
+            EVENTS
           </Link>
 
           <Link

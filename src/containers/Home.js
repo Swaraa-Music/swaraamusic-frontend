@@ -25,14 +25,14 @@ const Home = () => {
       img: hero1,
       title: "Bollywood Live Singing for Events",
       description:
-        "Birthday parties, Mehndi Nights, Anniversaries, and more - Swaraa Music brings your event to life with Bolywood live singing",
+        "Birthday parties, Mehndi Nights, Anniversaries, and more - Swaraa Music brings your event to life with Bollywood live singing",
       button: "Contact Us",
     },
     {
       img: hero2,
       title: "Bollywood Music Events",
       description:
-        "Swaraa Music cna provide a sparkle to your event with Bollywood singing ranging from the Golden Oldies to the lates hits",
+        "Swaraa Music can provide a sparkle to your event with Bollywood singing ranging from the Golden Oldies to the lates hits",
       button: "Contact Us",
     },
     {

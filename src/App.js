@@ -13,6 +13,7 @@ import Gallery from "./containers/Gallery";
 import Videos from "./containers/Videos";
 import Contact from "./containers/Contact";
 import Admin from "./containers/Admin";
+import Services from "./containers/Services";
 
 // Components
 import Header from "./components/Header";
@@ -28,6 +29,9 @@ function App() {
       <Switch>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route path="/services">
+          <Services />
         </Route>
         <Route path="/contact">
           <Contact />
