@@ -36,26 +36,23 @@ const Gallery = () => {
     <Loader />
   ) : (
     <div className="gallery">
-      {
-        <div className="gallery__container">
-          {modal ? (
-            <div className="gallery__modal">
-              <i class="fas fa-times" onClick={() => setModal(false)}></i>
-              <img src={modalInfo} alt={modalInfo} />
-            </div>
-          ) : (
-            data.map((picture, index) => {
-              return (
-                <img
-                  src={picture.url}
-                  alt={picture.url}
-                  onClick={() => modalHandle({ info: picture.url })}
-                />
-              );
-            })
-          )}
-        </div>
-      }
+      <div className="gallery__container">
+        <script src="https://snapwidget.com/js/snapwidget.js"></script>
+        <iframe
+          src="https://snapwidget.com/embed/972068"
+          class="snapwidget-widget"
+          allowtransparency="true"
+          frameborder="0"
+          scrolling="no"
+          style={{
+            border: "none",
+            overflow: "hidden",
+            width: "100%",
+            height: "auto",
+            padding: "10px",
+          }}
+        ></iframe>
+      </div>
     </div>
   );
 };
