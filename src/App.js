@@ -17,6 +17,7 @@ import Services from "./containers/Services";
 
 // Components
 import Header from "./components/Header";
+import WhatsApp from "./components/Utility/WhatsApp";
 
 function App() {
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <WhatsApp />
       <Switch>
         <Route path="/admin">
           <Admin />

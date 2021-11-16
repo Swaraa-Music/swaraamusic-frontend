@@ -18,6 +18,12 @@ const Footer = () => {
           <a href="https://twitter.com/swaraamusiclive" target="_blank">
             <i class="fab fa-twitter"></i>
           </a>
+          <a
+            href="https://www.youtube.com/channel/UC8bEYJQYbbdHCGtss6BQZSg"
+            target="_blank"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
         </div>
         <div>
           Website designed by{" "}
