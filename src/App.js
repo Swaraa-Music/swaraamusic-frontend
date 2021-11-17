@@ -13,7 +13,10 @@ import Gallery from "./containers/Gallery";
 import Videos from "./containers/Videos";
 import Contact from "./containers/Contact";
 import Admin from "./containers/Admin";
-import Services from "./containers/Services";
+import Events from "./containers/Events";
+import Past from "./containers/Past";
+import Testimonials from "./containers/Testimonials";
+import VideoTestimonials from "./containers/VideoTestimonials";
 
 // Components
 import Header from "./components/Header";
@@ -32,8 +35,17 @@ function App() {
         <Route path="/admin">
           <Admin />
         </Route>
-        <Route path="/services">
-          <Services />
+        <Route path="/videotestimonials">
+          <VideoTestimonials />
+        </Route>
+        <Route path="/testimonials">
+          <Testimonials />
+        </Route>
+        <Route path="/past">
+          <Past />
+        </Route>
+        <Route path="/events">
+          <Events />
         </Route>
         <Route path="/contact">
           <Contact />

@@ -3,10 +3,14 @@ import logo from "../assets/img/logo_white_transparent.png";
 
 // Packages
 import { Link, useLocation, useHistory } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
   const location = useLocation();
   const history = useHistory();
+
+  // States
+  const [modal, setModal] = useState(false);
   return (
     <div className="header bg-pink-purple-gradient">
       <div className="header__logo__container">
@@ -39,8 +43,15 @@ const Header = () => {
           onClick={() => history.push("/")}
         />
         <div>
-          <p>07866 366 197 or 07944 587 606</p>
-          <p>bookings@swaraamusic.com</p>
+          <p>
+            {" "}
+            <a href="tel:07866 366 197">07866 366 197</a> or{" "}
+            <a href="tel:07944 587 606">07944 587 606</a>
+          </p>
+          <p>
+            {" "}
+            <a href="mailto:info@swaraamusic.com">info@swaraamusic.com</a>{" "}
+          </p>
         </div>
       </div>
       <div className="header__menu">
@@ -86,14 +97,30 @@ const Header = () => {
             VIDEOS
           </Link>
           <Link
-            to="/services"
+            to="/events"
             className={
-              location.pathname === "/services"
+              location.pathname === "/events"
                 ? "header__clicked"
                 : "underline-grow"
             }
+            onClick={() => setModal(!modal)}
+            onMouseOver={() => setModal(true)}
+            onMouseLeave={() => setModal(false)}
           >
             EVENTS
+            {modal && (
+              <div className="events__dropdown">
+                <Link to="/past" onClick={() => setModal(false)}>
+                  Previous Gigs
+                </Link>
+                <Link to="/testimonials" onClick={() => setModal(false)}>
+                  Testimonials
+                </Link>
+                <Link to="/videotestimonials" onClick={() => setModal(false)}>
+                  Video Testimonials
+                </Link>
+              </div>
+            )}
           </Link>
 
           <Link

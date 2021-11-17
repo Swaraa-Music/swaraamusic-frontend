@@ -52,10 +52,14 @@ const Contact = () => {
         <div className="contact__info">
           <h1 className="txt-description-black">Phone : </h1>
           <p>
-            07866 366 197 <span>or</span> 07944 587 606
+            <a href="tel:07866 366 197">07866 366 197</a> <span>or</span>{" "}
+            <a href="tel:07944 587 606">07944 587 606</a>
           </p>
           <h1 className="txt-description-black">Email :</h1>
-          <p>info@swaraamusic.com</p>
+          <p>
+            {" "}
+            <a href="mailto:info@swaraamusic.com">info@swaraamusic.com</a>
+          </p>
         </div>
         <div className="contact__form">
           {isSent ? (

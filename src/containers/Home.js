@@ -2,8 +2,11 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 // Components
+import Loader from "../components/Utility/Loader";
 import Footer from "../components/Footer";
 
 // img
@@ -16,7 +19,7 @@ import stars from "../assets/img/5-star-rating.png";
 import profile from "../assets/img/profile.jpg";
 
 // JSON
-import testimonials from "../assets/json/testimonials.json";
+// import testimonials from "../assets/json/testimonials.json";
 
 const Home = () => {
   const history = useHistory();
@@ -43,7 +46,28 @@ const Home = () => {
       button: "Contact Us",
     },
   ];
-  return (
+  // States
+  const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://swaaramusic-backend.herokuapp.com/testimonials`
+        );
+        setData(response.data);
+        setIsLoading(false);
+
+        console.log(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className="home">
       <Carousel
         showThumbs={false}
@@ -58,11 +82,11 @@ const Home = () => {
           return (
             <div className="hero__slide">
               <div className="hero__text" data-aos="fade">
-                <img
+                {/* <img
                   src={logoWhite}
                   alt="Swaraa Music Logo"
                   className="hero__logo"
-                />
+                /> */}
                 <h1 className="hero__title">{hero.title}</h1>
                 <h2 className="hero__description">{hero.description}</h2>
                 <button
@@ -115,12 +139,12 @@ const Home = () => {
           autoPlay={true}
           infiniteLoop={true}
         >
-          {testimonials.map((testimonial, index) => {
+          {data.map((testimonial, index) => {
             return (
               <div className="home__testimonial">
-                <h1>" {testimonial.text} "</h1>
+                <h1>" {testimonial.testimonial} "</h1>
                 <h2>{testimonial.author}</h2>
-                <h3>{testimonial.from}</h3>
+                <h3>{testimonial.event}</h3>
                 <img src={stars} alt={stars} />
               </div>
             );
