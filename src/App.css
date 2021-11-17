@@ -443,7 +443,7 @@ body {
 
 .testimonials {
   margin: 0 auto;
-  padding: 100px 100px 70px 100px;
+  padding: 100px 100px 0 100px;
   width: 100vw;
   max-width: 1440px;
   background-color: var(--clr--purple);
@@ -963,6 +963,7 @@ body {
 }
 
 .videoTestimonials__container {
+  min-height: 100vh;
   margin: 0 auto;
   display: flex;
   justify-content: center;
