@@ -20,7 +20,7 @@ const Past = () => {
           `https://swaaramusic-backend.herokuapp.com/pictures`
         );
         setData(response.data.resources);
-        console.log(data);
+        console.log(response.data.resources);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);

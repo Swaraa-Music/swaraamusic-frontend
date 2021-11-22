@@ -27,7 +27,7 @@ const Events = () => {
             history.push("/contact");
           }}
         >
-          <h1>Weddings & ADD Receptions</h1>
+          <h1>Weddings & Receptions</h1>
           <img
             src="https://res.cloudinary.com/itrsq/image/upload/v1636979176/swaraamusic/Indian-Traditions39-563-Damion-Edwards-Photography_ipjloh.jpg"
             alt="Wedding Picture"

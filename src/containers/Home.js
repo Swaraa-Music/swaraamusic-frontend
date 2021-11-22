@@ -15,6 +15,8 @@ import logoPurple from "../assets/img/logo_purple_transparent.png";
 import hero1 from "../assets/img/hero1.jpg";
 import hero2 from "../assets/img/hero2.jpg";
 import hero3 from "../assets/img/hero3.jpg";
+import hero4 from "../assets/img/hero4.jpeg";
+import hero5 from "../assets/img/hero5.jpeg";
 import stars from "../assets/img/5-star-rating.png";
 import profile from "../assets/img/profile.jpg";
 
@@ -42,7 +44,21 @@ const Home = () => {
       img: hero3,
       title: "Anniversary Parties",
       description:
-        "Let Swaraa Music add a touch of magic to your anniversary celebrations with a range of Classic Retro Bollywood songs and the latest chart-busters.",
+        "Let Swaraa Music add a touch of magic to your anniversary celebrations with a range of Classic Retro Bollywood songs and the latest chart-busters",
+      button: "Contact Us",
+    },
+    {
+      img: hero5,
+      title: "Corporate & Charity Events",
+      description:
+        "If you’re planning a corporate fundraising event to raise money for a great cause or simply want a lively work event, Swaraa Music will guarantee a lovely time for everyone",
+      button: "Contact Us",
+    },
+    {
+      img: hero4,
+      title: "Weddings & Receptions",
+      description:
+        "A special day needs a special performance, don't you think ?",
       button: "Contact Us",
     },
   ];
@@ -82,6 +98,7 @@ const Home = () => {
           return (
             <div className="hero__slide">
               <div className="hero__text" data-aos="fade">
+                <div></div>
                 {/* <img
                   src={logoWhite}
                   alt="Swaraa Music Logo"
@@ -102,18 +119,16 @@ const Home = () => {
         })}
       </Carousel>
       <div className="home__about">
-        <img src={logoPurple} alt="Swaraa Music Logo" data-aos="fade" />
+        <img src={logoPurple} alt="Swaraa Music Logo" />
         <div>
-          <h1 className="txt-header-purple" data-aos="fade-left">
-            Who are Swaraa Music ?
-          </h1>
-          <h2 className="txt-description-black-bold" data-aos="fade-left">
+          <h1 className="txt-header-purple">Who are Swaraa Music ?</h1>
+          <h2 className="txt-description-black-bold">
             Swaraa Music are a leading Live Bollywood Asian Indian music group
             based in London. We are a collective team of professional vocalists
             and musicians specialising in all decades of Asian Indian popular
             music.
           </h2>
-          <p className="txt-description-black" data-aos="fade-left">
+          <p className="txt-description-black">
             Our speciality is in all genres of songs from many of the old
             classic movies of yesteryear to current day new releases from the
             Bollywood film industry. A close relationship with all of our
