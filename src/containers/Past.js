@@ -47,11 +47,14 @@ const Past = () => {
       <div className="past__container">
         {data.map((img) => {
           return (
-            <img
-              src={img.url}
-              alt={img.public_id}
-              onClick={() => modalHandle({ info: img.url })}
-            />
+            <div>
+              {" "}
+              <img
+                src={img.url}
+                alt={img.public_id}
+                onClick={() => modalHandle({ info: img.url })}
+              />
+            </div>
           );
         })}
       </div>

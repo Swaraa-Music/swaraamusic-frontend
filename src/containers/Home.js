@@ -30,7 +30,7 @@ const Home = () => {
       img: hero1,
       title: "Bollywood Live Singing for Events",
       description:
-        "Birthday parties, Mehndi Nights, Anniversaries, and more - Swaraa Music brings your event to life with Bollywood live singing",
+        "Birthday parties, Mehndhi Nights, Anniversaries, and more - Swaraa Music brings your event to life with Bollywood live singing",
       button: "Contact Us",
     },
     {
@@ -42,9 +42,9 @@ const Home = () => {
     },
     {
       img: hero3,
-      title: "Anniversary Parties",
+      title: "Parties",
       description:
-        "Let Swaraa Music add a touch of magic to your anniversary celebrations with a range of Classic Retro Bollywood songs and the latest chart-busters",
+        "Let Swaraa Music add a touch of magic to your celebrations with a range of Classic Retro Bollywood songs and the latest chart-busters",
       button: "Contact Us",
     },
     {
@@ -98,12 +98,11 @@ const Home = () => {
           return (
             <div className="hero__slide">
               <div className="hero__text" data-aos="fade">
-                <div></div>
-                {/* <img
+                <img
                   src={logoWhite}
                   alt="Swaraa Music Logo"
                   className="hero__logo"
-                /> */}
+                />
                 <h1 className="hero__title">{hero.title}</h1>
                 <h2 className="hero__description">{hero.description}</h2>
                 <button

@@ -299,31 +299,52 @@ body {
 }
 
 .hero__img {
-  width: 100%;
-  height: 78vh;
+  max-width: 60%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
   position: relative;
-  filter: brightness(60%);
+  display: block;
+  /* filter: brightness(60%); */
 }
 
 .hero__slide {
   position: relative;
+  display: flex;
+  width: 100%;
+  height: 78vh;
 }
 
 .hero__text {
-  position: absolute;
   color: white;
   font-family: var(--ff--common);
-  width: 100%;
+  width: 50%;
   height: 100%;
   bottom: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   z-index: 5;
   margin-bottom: 50px;
+  background: rgb(85, 50, 130);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(85, 50, 130, 1) 0%,
+    rgba(190, 59, 126, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(85, 50, 130, 1) 0%,
+    rgba(190, 59, 126, 1) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(85, 50, 130, 1) 0%,
+    rgba(190, 59, 126, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#553282",endColorstr="#be3b7e",GradientType=1);
+  /* background-color: var(--clr--purple); */
 }
 
 .hero__logo {
@@ -394,7 +415,7 @@ body {
 }
 
 .home__testimonial {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding-top: 20px;
   display: flex;
@@ -405,7 +426,7 @@ body {
 .home__testimonial > h1 {
   font-style: italic;
   color: white;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   font-size: 20px;
   line-height: 28px;
@@ -435,10 +456,6 @@ body {
   max-width: 200px;
   object-fit: contain;
   margin-top: -30px;
-}
-
-.testimonials {
-  width: 100vw;
 }
 
 .testimonials {
@@ -723,14 +740,22 @@ body {
   margin-bottom: 50px;
 }
 
-.past__container > img {
+.past__container > div {
   width: 23%;
   height: 300px;
-  object-fit: cover;
+  object-fit: contain;
+  margin: 0.4%;
+  background-color: black;
+}
+
+.past__container > div > img {
+  width: 99%;
+  height: 99%;
+  object-fit: contain;
   margin: 0.4%;
 }
 
-.past__container > img:hover {
+.past__container > div:hover {
   filter: brightness(0.5);
   cursor: pointer;
 }
@@ -817,6 +842,38 @@ body {
 
 .admin__password > * {
   margin-bottom: 20px;
+}
+
+.admin__deleteModal {
+  width: 100%;
+  display: flex;
+  flex-direction: row !important;
+  justify-content: center;
+
+  flex-wrap: wrap;
+}
+
+.admin__deleteModal > div {
+  width: 23%;
+  height: 300px;
+  margin: 0.4%;
+  background-color: black;
+  position: relative;
+}
+
+.admin__deleteModal > div > img {
+  width: 99%;
+  height: 99%;
+  object-fit: contain;
+  margin: 0.4%;
+}
+
+.admin__deleteModal > div > button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
 }
 
 /* events */
@@ -1015,10 +1072,36 @@ body {
   }
 
   /* Home */
+  .hero__slide {
+    position: relative;
+    height: 70vh;
+  }
   .hero__img {
-    height: 68vh;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+    filter: brightness(60%);
+  }
+
+  .hero__text {
+    position: absolute;
+    color: white;
+    font-family: var(--ff--common);
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 5;
+    margin-bottom: 50px;
+    background: none;
   }
   .hero__logo {
+    display: none !important;
     height: 80px;
   }
   .hero__title {

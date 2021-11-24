@@ -7,13 +7,32 @@ import Loader from "../components/Utility/Loader";
 
 const Admin = () => {
   // States
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [picture, setPicture] = useState();
   const [security, setSecurity] = useState(true);
   const [password, setPassword] = useState();
   const [author, setAuthor] = useState();
   const [testimonial, setTestimonial] = useState();
   const [event, setEvent] = useState();
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [data, setData] = useState();
+
+  // Fetch pictures
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://swaaramusic-backend.herokuapp.com/pictures`
+        );
+        setData(response.data.resources);
+        console.log(response.data.resources);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
 
   // Upload picture
   const uploadHandle = async () => {
@@ -54,6 +73,24 @@ const Admin = () => {
     }
   };
 
+  // Delete Picture
+  const deleteHandle = async (props) => {
+    console.log(props.publicId);
+    try {
+      setIsLoading(true);
+      await axios.post(
+        `https://swaaramusic-backend.herokuapp.com/picture/delete`,
+        { publicId: props.publicId }
+      );
+      setIsLoading(false);
+      alert("Picture has been deleted!");
+      window.location.reload(false);
+    } catch (error) {
+      setIsLoading(false);
+      alert(error);
+    }
+  };
+
   return isLoading ? (
     <Loader />
   ) : (
@@ -78,6 +115,28 @@ const Admin = () => {
               Submit
             </button>
           </div>
+        ) : deleteModal ? (
+          <div className="admin__deleteModal">
+            <button
+              className="btn-burgundy"
+              onClick={() => setDeleteModal(false)}
+            >
+              Return to Admin
+            </button>
+            {data.map((img) => {
+              return (
+                <div>
+                  <img src={img.url} alt={img.public_id} />
+                  <button
+                    className="btn-burgundy"
+                    onClick={() => deleteHandle({ publicId: img.public_id })}
+                  >
+                    Delete
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         ) : (
           <>
             <label className="txt-header-purple">
@@ -91,6 +150,15 @@ const Admin = () => {
               />
               <button className="btn-burgundy" onClick={() => uploadHandle()}>
                 Upload Picture
+              </button>
+            </label>
+            <label className="txt-header-purple">
+              Delete Picture (Past Gigs)
+              <button
+                className="btn-burgundy"
+                onClick={() => setDeleteModal(true)}
+              >
+                Select Picture to be deleted
               </button>
             </label>
             <div className="txt-header-purple">
