@@ -98,19 +98,25 @@ const Home = () => {
           return (
             <div className="hero__slide">
               <div className="hero__text" data-aos="fade">
-                <img
+                {/* <img
                   src={logoWhite}
                   alt="Swaraa Music Logo"
                   className="hero__logo"
-                />
-                <h1 className="hero__title">{hero.title}</h1>
-                <h2 className="hero__description">{hero.description}</h2>
-                <button
-                  className="btn-burgundy"
-                  onClick={() => history.push("/contact")}
-                >
-                  {hero.button}
-                </button>
+                /> */}
+                <div>
+                  {" "}
+                  <h1 className="hero__title">{hero.title}</h1>
+                </div>
+                <div>
+                  {" "}
+                  <h2 className="hero__description">{hero.description}</h2>
+                  <button
+                    className="btn-burgundy"
+                    onClick={() => history.push("/contact")}
+                  >
+                    {hero.button}
+                  </button>
+                </div>
               </div>
               <img src={hero.img} alt={hero.img} className="hero__img" />
             </div>

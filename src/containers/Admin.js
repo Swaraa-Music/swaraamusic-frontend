@@ -16,6 +16,8 @@ const Admin = () => {
   const [event, setEvent] = useState();
   const [deleteModal, setDeleteModal] = useState(false);
   const [data, setData] = useState();
+  const [data1, setData1] = useState();
+  const [testimonialId, setTestimonialId] = useState();
 
   // Fetch pictures
   useEffect(() => {
@@ -24,8 +26,12 @@ const Admin = () => {
         const response = await axios.get(
           `https://swaaramusic-backend.herokuapp.com/pictures`
         );
+        const response1 = await axios.get(
+          `https://swaaramusic-backend.herokuapp.com/testimonials`
+        );
         setData(response.data.resources);
-        console.log(response.data.resources);
+        setData1(response1.data);
+        setTestimonialId(response1.data[0]._id);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -84,6 +90,26 @@ const Admin = () => {
       );
       setIsLoading(false);
       alert("Picture has been deleted!");
+      window.location.reload(false);
+    } catch (error) {
+      setIsLoading(false);
+      alert(error);
+    }
+  };
+
+  // Delete Tetsimonial
+  const deleteTestimonialHandle = async () => {
+    console.log(testimonialId);
+    try {
+      setIsLoading(true);
+      await axios.post(
+        `https://swaaramusic-backend.herokuapp.com/testimonial/delete`,
+        {
+          testimonialId: testimonialId,
+        }
+      );
+      setIsLoading(false);
+      alert("Testimonial has been deleted!");
       window.location.reload(false);
     } catch (error) {
       setIsLoading(false);
@@ -188,6 +214,27 @@ const Admin = () => {
                 Upload Testimonial
               </button>
             </div>
+            <label className="txt-header-purple">
+              Delete Testimonial
+              <select
+                name="testimonials"
+                onChange={(e) => setTestimonialId(e.target.value)}
+              >
+                {data1.map((testimonial) => {
+                  return (
+                    <option value={testimonial._id}>
+                      {testimonial.author}
+                    </option>
+                  );
+                })}
+              </select>
+              <button
+                className="btn-burgundy"
+                onClick={() => deleteTestimonialHandle()}
+              >
+                Delete Testimonial
+              </button>
+            </label>
           </>
         )}
       </div>
