@@ -428,12 +428,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
+
+  height: 100%;
 }
 .home__testimonial > h1 {
   font-style: italic;
   color: white;
   width: 90%;
+
   margin: 0 auto;
   font-size: 20px;
   line-height: 28px;
@@ -1164,6 +1168,12 @@ body {
   }
   .home__testimonial {
     width: 60%;
+  }
+  .home__testimonial > h1 {
+    width: 60%;
+    font-size: 16px;
+    max-height: 30vh;
+    overflow: hidden;
   }
 
   .testimonial {
