@@ -36,7 +36,7 @@ const Videos = () => {
             controls
             src="https://res.cloudinary.com/itrsq/video/upload/v1637939362/swaraamusic/Videos/VID-2021showrel_4_website_jd238q.mp4"
           ></video> */}
-        <h1 className="txt-header-white">Youtube Videos</h1>
+        <h1 className="txt-header-white">Event Video Clips</h1>
       </div>
 
       <div className="videos__container">
