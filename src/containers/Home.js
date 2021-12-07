@@ -16,7 +16,7 @@ import hero1 from "../assets/img/hero1.jpg";
 import hero2 from "../assets/img/hero2.jpg";
 import hero3 from "../assets/img/hero3.jpg";
 import hero4 from "../assets/img/hero4.jpeg";
-import hero5 from "../assets/img/hero5.jpeg";
+import hero5 from "../assets/img/hero5.jpg";
 import stars from "../assets/img/5-star-rating.png";
 import profile from "../assets/img/profile.jpg";
 
