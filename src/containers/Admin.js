@@ -90,7 +90,6 @@ const Admin = () => {
       );
       setIsLoading(false);
       alert("Picture has been deleted!");
-      window.location.reload(false);
     } catch (error) {
       setIsLoading(false);
       alert(error);
