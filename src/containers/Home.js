@@ -63,7 +63,8 @@ const Home = () => {
     },
   ];
   // States
-  const [data, setData] = useState();
+  const [testimonials, setTestimonials] = useState();
+  const [heroSliders, setHeroSliders] = useState();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
@@ -71,7 +72,12 @@ const Home = () => {
         const response = await axios.get(
           `https://swaaramusic-backend.herokuapp.com/testimonials`
         );
-        setData(response.data);
+        setTestimonials(response.data);
+        const response1 = await axios.get(
+          `https://swaaramusic-backend.herokuapp.com/pictures/hero`
+        );
+        setHeroSliders(response1.data);
+
         setIsLoading(false);
 
         console.log(response.data);
@@ -94,7 +100,7 @@ const Home = () => {
         transitionTime={1000}
         interval={4000}
       >
-        {hero.map((hero, index) => {
+        {heroSliders.map((hero, index) => {
           return (
             <div className="hero__slide">
               <div className="hero__text" data-aos="fade">
@@ -109,16 +115,20 @@ const Home = () => {
                 </div>
                 <div>
                   {" "}
-                  <h2 className="hero__description">{hero.description}</h2>
+                  <h2 className="hero__description">{hero.text}</h2>
                   <button
                     className="btn-burgundy"
                     onClick={() => history.push("/contact")}
                   >
-                    {hero.button}
+                    Contact Us
                   </button>
                 </div>
               </div>
-              <img src={hero.img} alt={hero.img} className="hero__img" />
+              <img
+                src={hero.picture}
+                alt={hero.picture}
+                className="hero__img"
+              />
             </div>
           );
         })}
@@ -159,7 +169,7 @@ const Home = () => {
           autoPlay={true}
           infiniteLoop={true}
         >
-          {data.map((testimonial, index) => {
+          {testimonials.map((testimonial, index) => {
             return (
               <div className="home__testimonial">
                 <h1>" {testimonial.testimonial} "</h1>

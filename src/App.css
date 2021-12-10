@@ -890,6 +890,52 @@ body {
   width: 100%;
 }
 
+.admin__hero__container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.admin__hero {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 1%;
+  text-align: center;
+  padding: 10px;
+  border: solid 2px black;
+}
+
+.admin__hero > img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border: solid black 2px;
+}
+.admin__hero > label {
+  width: 100%;
+}
+
+.admin__hero > label > h2 {
+  margin: 5px 0;
+}
+
+.admin__hero > label > input {
+  margin: 5px 0;
+  width: 100%;
+}
+
+.admin__hero > label > textarea {
+  font-family: var(--ff--common);
+  margin: 5px 0;
+  width: 100%;
+  height: 100px;
+}
+
 /* events */
 .events {
   min-height: 100vh;
