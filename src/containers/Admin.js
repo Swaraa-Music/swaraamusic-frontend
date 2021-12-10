@@ -18,6 +18,10 @@ const Admin = () => {
   const [data, setData] = useState();
   const [data1, setData1] = useState();
   const [testimonialId, setTestimonialId] = useState();
+  const [about, setAbout] = useState();
+  const [title, setTitle] = useState();
+  const [text, setText] = useState();
+  const [subTitle, setSubTitle] = useState();
 
   // Home slider States
   const [picture1Display, setPicture1Display] = useState();
@@ -55,8 +59,12 @@ const Admin = () => {
         const response2 = await axios.get(
           `https://swaaramusic-backend.herokuapp.com/pictures/hero`
         );
+        const response3 = await axios.get(
+          `https://swaaramusic-backend.herokuapp.com/abouts`
+        );
         setData(response.data.resources);
         setData1(response1.data);
+        setAbout(response3.data);
         setTestimonialId(response1.data[0]._id);
 
         // Setting home slider Data
@@ -192,6 +200,28 @@ const Admin = () => {
       );
       setIsLoading(false);
       alert("Home Slider has been updated ! ");
+    } catch (error) {
+      setIsLoading(false);
+      alert(error);
+    }
+  };
+
+  // Update about
+  const aboutHandle = async (props) => {
+    const formData = new FormData();
+    formData.append("subTitle", subTitle);
+    formData.append("title", title);
+    formData.append("text", text);
+    formData.append("id", props.id);
+
+    try {
+      setIsLoading(true);
+      await axios.post(
+        `https://swaaramusic-backend.herokuapp.com/pictures/about/update`,
+        formData
+      );
+      setIsLoading(false);
+      alert("Section updated ! ");
     } catch (error) {
       setIsLoading(false);
       alert(error);
@@ -471,6 +501,50 @@ const Admin = () => {
                 Update Home Slider
               </button>
             </label>
+            <label className="txt-header-purple">Change About Sections</label>
+
+            <div className="txt-header-purple admin__about">
+              {about.map((about) => {
+                return (
+                  <div>
+                    <label className="txt-header-purple">
+                      {about._id === "61b35973d330521b079d16c7" && "Home Top"}
+                      {about._id === "61b35c566805e98e15cef2ff" &&
+                        "Home Bottom"}
+                      {about._id === "61b35cc66805e98e15cef301" && "About Page"}
+                    </label>
+                    {about._id !== "61b35c566805e98e15cef2ff" && (
+                      <h2 className="txt-description-black">Title</h2>
+                    )}
+                    {about._id !== "61b35c566805e98e15cef2ff" && (
+                      <input
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                      />
+                    )}
+
+                    <h2 className="txt-description-black">Sub-title</h2>
+                    <textarea
+                      type="text"
+                      value={subTitle}
+                      onChange={(e) => setSubTitle(e.target.value)}
+                    ></textarea>
+                    <h2 className="txt-description-black">Text</h2>
+                    <textarea
+                      value={text}
+                      onChange={(e) => setText(e.target.value)}
+                    ></textarea>
+                    <button
+                      className="btn-burgundy"
+                      onClick={() => aboutHandle({ id: about._id })}
+                    >
+                      Update Section
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
           </>
         )}
       </div>

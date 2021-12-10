@@ -66,6 +66,7 @@ const Home = () => {
   const [testimonials, setTestimonials] = useState();
   const [heroSliders, setHeroSliders] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [about, setAbout] = useState();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -77,6 +78,10 @@ const Home = () => {
           `https://swaaramusic-backend.herokuapp.com/pictures/hero`
         );
         setHeroSliders(response1.data);
+        const response2 = await axios.get(
+          `https://swaaramusic-backend.herokuapp.com/abouts`
+        );
+        setAbout(response2.data);
 
         setIsLoading(false);
 
@@ -135,31 +140,25 @@ const Home = () => {
       </Carousel>
       <div className="home__about">
         <img src={logoPurple} alt="Swaraa Music Logo" />
-        <div>
-          <h1 className="txt-header-purple">Who are Swaraa Music ?</h1>
-          <h2 className="txt-description-black-bold">
-            Swaraa Music are a leading Live Bollywood Asian Indian music group
-            based in London. We are a collective team of professional vocalists
-            and musicians specialising in all decades of Asian Indian popular
-            music.
-          </h2>
-          <p className="txt-description-black">
-            Our speciality is in all genres of songs from many of the old
-            classic movies of yesteryear to current day new releases from the
-            Bollywood film industry. A close relationship with all of our
-            versatile musicians ensures, quality musical performances, ranging
-            from soulful romantic Bollywood songs, Uplifting dance songs,
-            Bhangra, Ghazals, Qawalis as well as the traditional taste of garba
-            and bhajans – Making your event a truly enjoyable and special!
-          </p>
-          <button
-            data-aos="fade"
-            className="btn-burgundy"
-            onClick={() => history.push("/about")}
-          >
-            Learn More
-          </button>
-        </div>
+
+        {about.map((about) => {
+          return (
+            about._id === "61b35973d330521b079d16c7" && (
+              <div>
+                <h1 className="txt-header-purple">{about.title}</h1>
+                <h2 className="txt-description-black-bold">{about.subTitle}</h2>
+                <p className="txt-description-black">{about.text}</p>
+                <button
+                  data-aos="fade"
+                  className="btn-burgundy"
+                  onClick={() => history.push("/about")}
+                >
+                  Learn More
+                </button>
+              </div>
+            )
+          );
+        })}
       </div>
       <div className="home__testimonials bg-pink-purple-gradient">
         <Carousel
@@ -183,41 +182,24 @@ const Home = () => {
       </div>
       <div className="home__about">
         <img src={profile} alt="Swaraa Music Singer" />
-        <div>
-          <h2 className="txt-description-black-bold">
-            Swaraa Music has more than 15 years of experience in live Indian
-            Bollywood music entertainment and always aim to bring music to your
-            ears, whatever the occasion or venue! Be it a small family function
-            or for a large community, charity or dinner and dance event, the
-            band line-up is tailored for your individual requirements.
-          </h2>
-          <p className="txt-description-black">
-            Our normal set-up of the live Bollywood Asian band includes: <br />
-            <br />
-            <ul>
-              <li>
-                Male & Female Vocalists, Keyboardist, Drummer and Indian
-                Percussionist (Tabla/Dholak)
-              </li>
-              <li>
-                We are also able to provide a Full PA sound system, along with a
-                sound engineer, that you might require meaning everything is
-                dealt with by our professional team, allowing you to just sit
-                back, relax and enjoy your entertainment.
-              </li>
-              <li>
-                At Swaraa Music, we do not just specialise in providing live
-                music – we will make sure your band looks great too.
-              </li>
-            </ul>
-          </p>
-          <button
-            className="btn-burgundy"
-            onClick={() => history.push("/contact")}
-          >
-            Get a Quote
-          </button>
-        </div>
+        {about.map((about) => {
+          return (
+            about._id === "61b35c566805e98e15cef2ff" && (
+              <div>
+                <h1 className="txt-header-purple">{about.title}</h1>
+                <h2 className="txt-description-black-bold">{about.subTitle}</h2>
+                <p className="txt-description-black">{about.text}</p>
+                <button
+                  data-aos="fade"
+                  className="btn-burgundy"
+                  onClick={() => history.push("/about")}
+                >
+                  Get a Quote
+                </button>
+              </div>
+            )
+          );
+        })}
       </div>
       <Footer />
     </div>
