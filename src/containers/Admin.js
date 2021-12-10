@@ -217,7 +217,7 @@ const Admin = () => {
     try {
       setIsLoading(true);
       await axios.post(
-        `https://swaaramusic-backend.herokuapp.com/pictures/about/update`,
+        `https://swaaramusic-backend.herokuapp.com/about/update`,
         formData
       );
       setIsLoading(false);
