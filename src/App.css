@@ -943,6 +943,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row !important;
+  margin-bottom: 30px;
 }
 
 .admin__about > div {
@@ -955,6 +956,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .admin__about > div > h2 {

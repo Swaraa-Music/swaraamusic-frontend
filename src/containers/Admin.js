@@ -18,10 +18,17 @@ const Admin = () => {
   const [data, setData] = useState();
   const [data1, setData1] = useState();
   const [testimonialId, setTestimonialId] = useState();
-  const [about, setAbout] = useState();
-  const [title, setTitle] = useState();
-  const [text, setText] = useState();
-  const [subTitle, setSubTitle] = useState();
+
+  // About States
+  const [aboutTitle1, setAboutTitle1] = useState();
+  const [aboutText1, setAboutText1] = useState();
+  const [aboutSubtitle1, setAboutSubtitle1] = useState();
+  const [aboutTitle2, setAboutTitle2] = useState();
+  const [aboutText2, setAboutText2] = useState();
+  const [aboutSubtitle2, setAboutSubtitle2] = useState();
+  const [aboutTitle3, setAboutTitle3] = useState();
+  const [aboutText3, setAboutText3] = useState();
+  const [aboutSubtitle3, setAboutSubtitle3] = useState();
 
   // Home slider States
   const [picture1Display, setPicture1Display] = useState();
@@ -64,8 +71,18 @@ const Admin = () => {
         );
         setData(response.data.resources);
         setData1(response1.data);
-        setAbout(response3.data);
         setTestimonialId(response1.data[0]._id);
+
+        // Setting About Data
+        setAboutText1(response3.data[0].text);
+        setAboutText2(response3.data[1].text);
+        setAboutText3(response3.data[2].text);
+        setAboutTitle1(response3.data[0].title);
+        setAboutTitle2(response3.data[1].title);
+        setAboutTitle3(response3.data[2].title);
+        setAboutSubtitle1(response3.data[0].subTitle);
+        setAboutSubtitle2(response3.data[1].subTitle);
+        setAboutSubtitle3(response3.data[2].subTitle);
 
         // Setting home slider Data
         setPicture1(response2.data[0].picture);
@@ -207,12 +224,17 @@ const Admin = () => {
   };
 
   // Update about
-  const aboutHandle = async (props) => {
+  const aboutHandle = async () => {
     const formData = new FormData();
-    formData.append("subTitle", subTitle);
-    formData.append("title", title);
-    formData.append("text", text);
-    formData.append("id", props.id);
+    formData.append("aboutText1", aboutText1);
+    formData.append("aboutSubtitle1", aboutSubtitle1);
+    formData.append("aboutTitle1", aboutTitle1);
+    formData.append("aboutText2", aboutText2);
+    formData.append("aboutSubtitle2", aboutSubtitle2);
+    formData.append("aboutTitle2", aboutTitle2);
+    formData.append("aboutText3", aboutText3);
+    formData.append("aboutSubtitle3", aboutSubtitle3);
+    formData.append("aboutTitle3", aboutTitle3);
 
     try {
       setIsLoading(true);
@@ -504,46 +526,70 @@ const Admin = () => {
             <label className="txt-header-purple">Change About Sections</label>
 
             <div className="txt-header-purple admin__about">
-              {about.map((about) => {
-                return (
-                  <div>
-                    <label className="txt-header-purple">
-                      {about._id === "61b35973d330521b079d16c7" && "Home Top"}
-                      {about._id === "61b35c566805e98e15cef2ff" &&
-                        "Home Bottom"}
-                      {about._id === "61b35cc66805e98e15cef301" && "About Page"}
-                    </label>
-                    {about._id !== "61b35c566805e98e15cef2ff" && (
-                      <h2 className="txt-description-black">Title</h2>
-                    )}
-                    {about._id !== "61b35c566805e98e15cef2ff" && (
-                      <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                      />
-                    )}
+              <div>
+                <label className="txt-header-purple">Home Top</label>
 
-                    <h2 className="txt-description-black">Sub-title</h2>
-                    <textarea
-                      type="text"
-                      value={subTitle}
-                      onChange={(e) => setSubTitle(e.target.value)}
-                    ></textarea>
-                    <h2 className="txt-description-black">Text</h2>
-                    <textarea
-                      value={text}
-                      onChange={(e) => setText(e.target.value)}
-                    ></textarea>
-                    <button
-                      className="btn-burgundy"
-                      onClick={() => aboutHandle({ id: about._id })}
-                    >
-                      Update Section
-                    </button>
-                  </div>
-                );
-              })}
+                <h2 className="txt-description-black">Title</h2>
+
+                <input
+                  type="text"
+                  value={aboutTitle1}
+                  onChange={(e) => setAboutTitle1(e.target.value)}
+                />
+
+                <h2 className="txt-description-black">Sub-title</h2>
+                <textarea
+                  type="text"
+                  value={aboutSubtitle1}
+                  onChange={(e) => setAboutSubtitle1(e.target.value)}
+                ></textarea>
+                <h2 className="txt-description-black">Text</h2>
+                <textarea
+                  value={aboutText1}
+                  onChange={(e) => setAboutText1(e.target.value)}
+                ></textarea>
+              </div>
+              <div>
+                <label className="txt-header-purple">Home Bottom</label>
+
+                <h2 className="txt-description-black">Sub-title</h2>
+                <textarea
+                  type="text"
+                  value={aboutSubtitle2}
+                  onChange={(e) => setAboutSubtitle2(e.target.value)}
+                ></textarea>
+                <h2 className="txt-description-black">Text</h2>
+                <textarea
+                  value={aboutText2}
+                  onChange={(e) => setAboutText2(e.target.value)}
+                ></textarea>
+              </div>
+              <div>
+                <label className="txt-header-purple">About Page</label>
+
+                <h2 className="txt-description-black">Title</h2>
+
+                <input
+                  type="text"
+                  value={aboutTitle3}
+                  onChange={(e) => setAboutTitle3(e.target.value)}
+                />
+
+                <h2 className="txt-description-black">Sub-title</h2>
+                <textarea
+                  type="text"
+                  value={aboutSubtitle3}
+                  onChange={(e) => setAboutSubtitle3(e.target.value)}
+                ></textarea>
+                <h2 className="txt-description-black">Text</h2>
+                <textarea
+                  value={aboutText3}
+                  onChange={(e) => setAboutText3(e.target.value)}
+                ></textarea>
+              </div>
+              <button className="btn-burgundy" onClick={() => aboutHandle()}>
+                Update About Sections
+              </button>
             </div>
           </>
         )}
