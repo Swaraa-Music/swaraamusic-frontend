@@ -10,13 +10,7 @@ import Loader from "../components/Utility/Loader";
 import Footer from "../components/Footer";
 
 // img
-import logoWhite from "../assets/img/logo_white_transparent.png";
 import logoPurple from "../assets/img/logo_purple_transparent.png";
-import hero1 from "../assets/img/hero1.jpg";
-import hero2 from "../assets/img/hero2.jpg";
-import hero3 from "../assets/img/hero3.jpg";
-import hero4 from "../assets/img/hero4.jpeg";
-import hero5 from "../assets/img/hero5.jpg";
 import stars from "../assets/img/5-star-rating.png";
 import profile from "../assets/img/profile.jpg";
 
@@ -25,43 +19,7 @@ import profile from "../assets/img/profile.jpg";
 
 const Home = () => {
   const history = useHistory();
-  const hero = [
-    {
-      img: hero1,
-      title: "Bollywood Live Singing for Events",
-      description:
-        "Birthday parties, Mehndhi Nights, Anniversaries, and more - Swaraa Music brings your event to life with Bollywood live singing",
-      button: "Contact Us",
-    },
-    {
-      img: hero2,
-      title: "Bollywood Music Events",
-      description:
-        "Swaraa Music can provide a sparkle to your event with Bollywood singing ranging from the Golden Oldies to the lates hits",
-      button: "Contact Us",
-    },
-    {
-      img: hero3,
-      title: "Parties",
-      description:
-        "Let Swaraa Music add a touch of magic to your celebrations with a range of Classic Retro Bollywood songs and the latest chart-busters",
-      button: "Contact Us",
-    },
-    {
-      img: hero5,
-      title: "Corporate & Charity Events",
-      description:
-        "If you’re planning a corporate fundraising event to raise money for a great cause or simply want a lively work event, Swaraa Music will guarantee a lovely time for everyone",
-      button: "Contact Us",
-    },
-    {
-      img: hero4,
-      title: "Weddings & Receptions",
-      description:
-        "A special day needs a special performance, don't you think ?",
-      button: "Contact Us",
-    },
-  ];
+
   // States
   const [testimonials, setTestimonials] = useState();
   const [heroSliders, setHeroSliders] = useState();

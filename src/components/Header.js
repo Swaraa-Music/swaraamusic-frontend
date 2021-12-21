@@ -15,21 +15,31 @@ const Header = () => {
     <div className="header bg-pink-purple-gradient">
       <div className="header__logo__container">
         <div>
-          <a href="https://www.facebook.com/swaraamusiclive/" target="_blank">
+          <a
+            href="https://www.facebook.com/swaraamusiclive/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <i className="fab fa-facebook"></i>
           </a>
           <a
             href="https://www.instagram.com/swaraamusiclive/?hl=fr"
             target="_blank"
+            rel="noreferrer"
           >
             <i className="fab fa-instagram"></i>
           </a>
-          <a href="https://twitter.com/swaraamusiclive" target="_blank">
+          <a
+            href="https://twitter.com/swaraamusiclive"
+            target="_blank"
+            rel="noreferrer"
+          >
             <i className="fab fa-twitter"></i>
           </a>
           <a
             href="https://www.youtube.com/channel/UC8bEYJQYbbdHCGtss6BQZSg"
             target="_blank"
+            rel="noreferrer"
           >
             <i class="fab fa-youtube"></i>
           </a>

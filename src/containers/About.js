@@ -50,7 +50,7 @@ const About = () => {
               <button
                 data-aos="fade"
                 className="btn-burgundy"
-                onClick={() => history.push("/about")}
+                onClick={() => history.push("/contact")}
               >
                 Get your quote
               </button>

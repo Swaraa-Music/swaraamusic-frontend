@@ -684,7 +684,7 @@ body {
 /* Gallery */
 
 .gallery {
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .gallery__container {
@@ -694,14 +694,14 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 300vh;
+  height: 680px;
 }
 
 .snapwidget-widget {
   height: auto;
 }
 
-.gallery__container > img {
+/* .gallery__container > img {
   width: 23%;
   height: 300px;
   object-fit: cover;
@@ -737,7 +737,7 @@ body {
   right: 50px;
   color: white;
   cursor: pointer;
-}
+} */
 
 /* Past */
 .past {
