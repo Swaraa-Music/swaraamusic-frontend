@@ -6,6 +6,11 @@ import { useState, useEffect } from "react";
 import Loader from "../components/Utility/Loader";
 import Footer from "../components/Footer";
 
+// Meta
+import Metadecorator from "../components/Utility/MetaDecorators";
+import tags from "../assets/json/meta_tags/videos.json";
+
+
 const Videos = () => {
   // States
   const [data, setData] = useState();
@@ -30,6 +35,7 @@ const Videos = () => {
     <Loader />
   ) : (
     <div className="videos bg-pink-purple-gradient">
+      <Metadecorator title={tags.pagetitle} description={tags.pagedescription} tags={tags.tags}/>
       <div className="videos__showreel__container">
         {/* <h1 className="txt-header-white">Showreel</h1>
           <video

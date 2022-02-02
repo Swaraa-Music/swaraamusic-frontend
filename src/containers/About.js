@@ -10,6 +10,10 @@ import Footer from "../components/Footer";
 // img
 import logo from "../assets/img/logo_purple_transparent.png";
 
+// Meta
+import Metadecorator from "../components/Utility/MetaDecorators";
+import tags from "../assets/json/meta_tags/about.json";
+
 const About = () => {
   const history = useHistory();
 
@@ -39,6 +43,7 @@ const About = () => {
     <Loader />
   ) : (
     <div className="about">
+      <Metadecorator title={tags.pagetitle} description={tags.pagedescription} tags={tags.tags}/>
       {about.map((about) => {
         return (
           about._id === "61b35cc66805e98e15cef301" && (

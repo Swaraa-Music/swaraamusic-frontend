@@ -6,6 +6,10 @@ import axios from "axios";
 import Footer from "../components/Footer";
 import Loader from "../components/Utility/Loader";
 
+// Meta
+import Metadecorator from "../components/Utility/MetaDecorators";
+import tags from "../assets/json/meta_tags/about.json";
+
 const Contact = () => {
   // States
   const [fullName, setFullName] = useState("");
@@ -47,6 +51,7 @@ const Contact = () => {
 
   return (
     <div className="contact">
+      <Metadecorator title={tags.pagetitle} description={tags.pagedescription} tags={tags.tags}/>
       {isLoading && <Loader />}
       <div className="contact__container">
         <div className="contact__info">

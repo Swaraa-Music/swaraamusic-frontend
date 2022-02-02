@@ -4,10 +4,15 @@ import { useHistory } from "react-router";
 // Components
 import Footer from "../components/Footer";
 
+// Meta
+import Metadecorator from "../components/Utility/MetaDecorators";
+import tags from "../assets/json/meta_tags/events.json";
+
 const Events = () => {
   const history = useHistory();
   return (
     <div className="events bg-pink-purple-gradient">
+      <Metadecorator title={tags.pagetitle} description={tags.pagedescription} tags={tags.tags}/>
       <div className="events__container">
         <div
           className="event"
