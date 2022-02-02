@@ -51,11 +51,16 @@ const Home = () => {
     };
     fetchData();
   }, []);
+  console.log(tags);
   return isLoading ? (
     <Loader />
   ) : (
     <div className="home">
-      <Metadecorator title={tags.pagetitle} description={tags.pagedescription} tags={tags.tags}/>
+      <Metadecorator
+        title={tags.pagetitle}
+        description={tags.pagedescription}
+        tags={tags.tags}
+      />
       <Carousel
         showThumbs={false}
         showIndicators={false}
