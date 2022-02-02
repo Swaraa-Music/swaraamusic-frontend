@@ -8,7 +8,11 @@ import tags from "../assets/json/meta_tags/gallery.json";
 const Gallery = () => {
   return (
     <div className="gallery">
-      <Metadecorator title={tags.pagetitle} description={tags.pagedescription} tags={tags.tags}/>
+      <Metadecorator
+        title={tags.pagetitle}
+        description={tags.pagedescription}
+        tags={tags.tags}
+      />
       <div className="gallery__container">
         <script src="https://snapwidget.com/js/snapwidget.js"></script>
         <iframe

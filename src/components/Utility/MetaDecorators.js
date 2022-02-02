@@ -3,11 +3,6 @@ import { PropTypes } from "prop-types";
 import { Helmet } from "react-helmet";
 
 const MetaDecorator = ({ title, description, tags }) => {
-  MetaDecorator.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    tags: PropTypes.string.isRequired,
-  };
   return (
     <Helmet>
       <title>{title}</title>
@@ -15,6 +10,11 @@ const MetaDecorator = ({ title, description, tags }) => {
       <meta name="keywords" content={tags} />
     </Helmet>
   );
+};
+MetaDecorator.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
 };
 
 export default MetaDecorator;
