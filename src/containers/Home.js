@@ -14,8 +14,9 @@ import logoPurple from "../assets/img/logo_purple_transparent.png";
 import stars from "../assets/img/5-star-rating.png";
 import profile from "../assets/img/profile.jpg";
 
-// JSON
-// import testimonials from "../assets/json/testimonials.json";
+// Meta
+import Metadecorator from "../components/Utility/MetaDecorators";
+import tags from "../assets/json/meta_tags/home.json";
 
 const Home = () => {
   const history = useHistory();
@@ -54,6 +55,7 @@ const Home = () => {
     <Loader />
   ) : (
     <div className="home">
+      <Metadecorator title={tags.pagetitle} description={tags.pagedescription} tags={tags.tags}/>
       <Carousel
         showThumbs={false}
         showIndicators={false}
