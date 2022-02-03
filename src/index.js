@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import Loadable from "react-loadable";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+window.onload = () => {
+  Loadable.preloadReady().then(() => {
+    ReactDOM.hydrate(<App />, document.getElementById("root"));
+  });
+};

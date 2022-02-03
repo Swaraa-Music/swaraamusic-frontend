@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Loadable from "react-loadable";
 
 // Containers
 import Home from "./containers/Home";
@@ -22,6 +23,13 @@ import VideoTestimonials from "./containers/VideoTestimonials";
 import Header from "./components/Header";
 import WhatsApp from "./components/Utility/WhatsApp";
 
+const AsyncComponent = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "myNamedChunk" */ "./components/Header"),
+  loading: () => <div>loading...</div>,
+  modules: ["myNamedChunk"],
+});
+
 function App() {
   useEffect(() => {
     // Scroll Animation function usin AOS package
@@ -29,7 +37,7 @@ function App() {
   }, []);
   return (
     <Router>
-      <Header />
+      <AsyncComponent />
       <WhatsApp />
       <Switch>
         <Route path="/admin">
