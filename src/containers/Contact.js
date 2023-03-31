@@ -10,6 +10,7 @@ import Loader from "../components/Utility/Loader";
 import Metadecorator from "../components/Utility/MetaDecorators";
 import tags from "../assets/json/meta_tags/about.json";
 import { API } from "../config";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   // States
@@ -27,24 +28,52 @@ const Contact = () => {
   const submitHandle = async () => {
     try {
       setIsLoading(true);
-      const formData = new FormData();
-      formData.append("from", from);
-      formData.append("fullName", fullName);
-      formData.append("subject", subject);
-      formData.append("message", message);
-      formData.append("phone", phone);
-      const response = await axios.post(`${API}/mail/contact`, formData);
-      if (response.data === "Email sent!") {
-        setIsSent(true);
-        setIsLoading(false);
-      } else {
-        setErrorMessage(response.data.error);
-        setIsLoading(false);
-      }
+      const data = {
+        from,
+        fullName,
+        subject,
+        message,
+        phone,
+      };
+
+      emailjs
+        .send("service_ibvw0og", "template_jcq7ggt", data, "SqbT2VloJb0NTjUDb")
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+
+      setIsSent(true);
+      setIsLoading(false);
     } catch (error) {
       setErrorMessage("Unknown Problem");
       setIsLoading(false);
     }
+
+    // try {
+    //   setIsLoading(true);
+    //   const formData = new FormData();
+    //   formData.append("from", from);
+    //   formData.append("fullName", fullName);
+    //   formData.append("subject", subject);
+    //   formData.append("message", message);
+    //   formData.append("phone", phone);
+    //   const response = await axios.post(`${API}/mail/contact`, formData);
+    //   if (response.data === "Email sent!") {
+    //     setIsSent(true);
+    //     setIsLoading(false);
+    //   } else {
+    //     setErrorMessage(response.data.error);
+    //     setIsLoading(false);
+    //   }
+    // } catch (error) {
+    //   setErrorMessage("Unknown Problem");
+    //   setIsLoading(false);
+    // }
   };
 
   return (
