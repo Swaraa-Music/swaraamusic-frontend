@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 
 // img
 import stars from "../assets/img/5-star-rating.png";
+import { API } from "../config";
 
 const Testimonials = () => {
   // States
@@ -16,9 +17,7 @@ const Testimonials = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://swaaramusic-backend.herokuapp.com/testimonials`
-        );
+        const response = await axios.get(`${API}/testimonials`);
         setData(response.data);
         setIsLoading(false);
 

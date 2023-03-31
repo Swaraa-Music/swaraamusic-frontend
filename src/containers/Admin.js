@@ -4,107 +4,100 @@ import axios from "axios";
 
 // Components
 import Loader from "../components/Utility/Loader";
+import { API } from "../config";
 
 const Admin = () => {
   // States
   const [isLoading, setIsLoading] = useState(true);
-  const [picture, setPicture] = useState();
+  const [picture, setPicture] = useState("");
   const [security, setSecurity] = useState(true);
-  const [password, setPassword] = useState();
-  const [author, setAuthor] = useState();
-  const [testimonial, setTestimonial] = useState();
-  const [event, setEvent] = useState();
+  const [password, setPassword] = useState("");
+  const [author, setAuthor] = useState("");
+  const [testimonial, setTestimonial] = useState("");
+  const [event, setEvent] = useState("");
   const [deleteModal, setDeleteModal] = useState(false);
-  const [data, setData] = useState();
-  const [data1, setData1] = useState();
-  const [testimonialId, setTestimonialId] = useState();
+  const [data, setData] = useState("");
+  const [data1, setData1] = useState("");
+  const [testimonialId, setTestimonialId] = useState("");
 
   // About States
-  const [aboutTitle1, setAboutTitle1] = useState();
-  const [aboutText1, setAboutText1] = useState();
-  const [aboutSubtitle1, setAboutSubtitle1] = useState();
-  const [aboutTitle2, setAboutTitle2] = useState();
-  const [aboutText2, setAboutText2] = useState();
-  const [aboutSubtitle2, setAboutSubtitle2] = useState();
-  const [aboutTitle3, setAboutTitle3] = useState();
-  const [aboutText3, setAboutText3] = useState();
-  const [aboutSubtitle3, setAboutSubtitle3] = useState();
+  const [aboutTitle1, setAboutTitle1] = useState("");
+  const [aboutText1, setAboutText1] = useState("");
+  const [aboutSubtitle1, setAboutSubtitle1] = useState("");
+  const [aboutTitle2, setAboutTitle2] = useState("");
+  const [aboutText2, setAboutText2] = useState("");
+  const [aboutSubtitle2, setAboutSubtitle2] = useState("");
+  const [aboutTitle3, setAboutTitle3] = useState("");
+  const [aboutText3, setAboutText3] = useState("");
+  const [aboutSubtitle3, setAboutSubtitle3] = useState("");
 
   // Home slider States
-  const [picture1Display, setPicture1Display] = useState();
-  const [picture2Display, setPicture2Display] = useState();
-  const [picture3Display, setPicture3Display] = useState();
-  const [picture4Display, setPicture4Display] = useState();
-  const [picture5Display, setPicture5Display] = useState();
-  const [picture1, setPicture1] = useState();
-  const [picture2, setPicture2] = useState();
-  const [picture3, setPicture3] = useState();
-  const [picture4, setPicture4] = useState();
-  const [picture5, setPicture5] = useState();
-  const [title1, setTitle1] = useState();
-  const [title2, setTitle2] = useState();
-  const [title3, setTitle3] = useState();
-  const [title4, setTitle4] = useState();
-  const [title5, setTitle5] = useState();
-  const [text1, setText1] = useState();
-  const [text2, setText2] = useState();
-  const [text3, setText3] = useState();
-  const [text4, setText4] = useState();
-  const [text5, setText5] = useState();
+  const [picture1Display, setPicture1Display] = useState("");
+  const [picture2Display, setPicture2Display] = useState("");
+  const [picture3Display, setPicture3Display] = useState("");
+  const [picture4Display, setPicture4Display] = useState("");
+  const [picture5Display, setPicture5Display] = useState("");
+  const [picture1, setPicture1] = useState("");
+  const [picture2, setPicture2] = useState("");
+  const [picture3, setPicture3] = useState("");
+  const [picture4, setPicture4] = useState("");
+  const [picture5, setPicture5] = useState("");
+  const [title1, setTitle1] = useState("");
+  const [title2, setTitle2] = useState("");
+  const [title3, setTitle3] = useState("");
+  const [title4, setTitle4] = useState("");
+  const [title5, setTitle5] = useState("");
+  const [text1, setText1] = useState("");
+  const [text2, setText2] = useState("");
+  const [text3, setText3] = useState("");
+  const [text4, setText4] = useState("");
+  const [text5, setText5] = useState("");
 
   // Fetch pictures
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://swaaramusic-backend.herokuapp.com/pictures`
-        );
-        const response1 = await axios.get(
-          `https://swaaramusic-backend.herokuapp.com/testimonials`
-        );
+        const response = await axios.get(`${API}/pictures`);
+        const response1 = await axios.get(`${API}/testimonials`);
 
-        const response2 = await axios.get(
-          `https://swaaramusic-backend.herokuapp.com/pictures/hero`
-        );
-        const response3 = await axios.get(
-          `https://swaaramusic-backend.herokuapp.com/abouts`
-        );
-        setData(response.data.resources);
-        setData1(response1.data);
-        setTestimonialId(response1.data[0]._id);
+        const response2 = await axios.get(`${API}/pictures/hero`);
+        const response3 = await axios.get(`${API}/abouts`);
+        setData(response?.data?.resources);
+        setData1(response1?.data);
+        setTestimonialId(response1?.data[0]?._id);
 
         // Setting About Data
-        setAboutText1(response3.data[0].text);
-        setAboutText2(response3.data[1].text);
-        setAboutText3(response3.data[2].text);
-        setAboutTitle1(response3.data[0].title);
-        setAboutTitle2(response3.data[1].title);
-        setAboutTitle3(response3.data[2].title);
-        setAboutSubtitle1(response3.data[0].subTitle);
-        setAboutSubtitle2(response3.data[1].subTitle);
-        setAboutSubtitle3(response3.data[2].subTitle);
+        setAboutText1(response3?.data[0]?.text);
+        setAboutText2(response3?.data[1]?.text);
+        setAboutText3(response3?.data[2]?.text);
+        setAboutTitle1(response3?.data[0]?.title);
+        setAboutTitle2(response3?.data[1]?.title);
+        setAboutTitle3(response3?.data[2]?.title);
+        setAboutSubtitle1(response3?.data[0]?.subTitle);
+        setAboutSubtitle2(response3?.data[1]?.subTitle);
+        setAboutSubtitle3(response3?.data[2]?.subTitle);
 
         // Setting home slider Data
-        setPicture1(response2.data[0].picture);
-        setPicture2(response2.data[1].picture);
-        setPicture3(response2.data[2].picture);
-        setPicture4(response2.data[3].picture);
-        setPicture5(response2.data[4].picture);
-        setPicture1Display(response2.data[0].picture);
-        setPicture2Display(response2.data[1].picture);
-        setPicture3Display(response2.data[2].picture);
-        setPicture4Display(response2.data[3].picture);
-        setPicture5Display(response2.data[4].picture);
-        setTitle1(response2.data[0].title);
-        setTitle2(response2.data[1].title);
-        setTitle3(response2.data[2].title);
-        setTitle4(response2.data[3].title);
-        setTitle5(response2.data[4].title);
-        setText1(response2.data[0].text);
-        setText2(response2.data[1].text);
-        setText3(response2.data[2].text);
-        setText4(response2.data[3].text);
-        setText5(response2.data[4].text);
+        setPicture1(response2?.data[0]?.picture);
+        setPicture2(response2?.data[1]?.picture);
+        setPicture3(response2?.data[2]?.picture);
+        setPicture4(response2?.data[3]?.picture);
+        setPicture5(response2?.data[4]?.picture);
+        setPicture1Display(response2?.data[0]?.picture);
+        setPicture2Display(response2?.data[1]?.picture);
+        setPicture3Display(response2?.data[2]?.picture);
+        setPicture4Display(response2?.data[3]?.picture);
+        setPicture5Display(response2?.data[4]?.picture);
+        setTitle1(response2?.data[0]?.title);
+        setTitle2(response2?.data[1]?.title);
+        setTitle3(response2?.data[2]?.title);
+        setTitle4(response2?.data[3]?.title);
+        setTitle5(response2?.data[4]?.title);
+        setText1(response2?.data[0]?.text);
+        setText2(response2?.data[1]?.text);
+        setText3(response2?.data[2]?.text);
+        setText4(response2?.data[3]?.text);
+        setText5(response2?.data[4]?.text);
 
         setIsLoading(false);
       } catch (error) {
@@ -120,10 +113,7 @@ const Admin = () => {
       setIsLoading(true);
       const formData = new FormData();
       formData.append("picture", picture);
-      await axios.post(
-        `https://swaaramusic-backend.herokuapp.com/picture/create`,
-        formData
-      );
+      await axios.post(`${API}/picture/create`, formData);
 
       setIsLoading(false);
       alert("Your picture has been uploaded!");
@@ -139,10 +129,11 @@ const Admin = () => {
     try {
       setIsLoading(true);
 
-      await axios.post(
-        `https://swaaramusic-backend.herokuapp.com/testimonial/create`,
-        { author, testimonial, event }
-      );
+      await axios.post(`${API}/testimonial/create`, {
+        author,
+        testimonial,
+        event,
+      });
 
       setIsLoading(false);
       alert("Your testimonial has been uploaded!");
@@ -158,10 +149,9 @@ const Admin = () => {
     console.log(props.publicId);
     try {
       setIsLoading(true);
-      await axios.post(
-        `https://swaaramusic-backend.herokuapp.com/picture/delete`,
-        { publicId: props.publicId }
-      );
+      await axios.post(`${API}/picture/delete`, {
+        publicId: props.publicId,
+      });
       setIsLoading(false);
       alert("Picture has been deleted!");
     } catch (error) {
@@ -175,12 +165,9 @@ const Admin = () => {
     console.log(testimonialId);
     try {
       setIsLoading(true);
-      await axios.post(
-        `https://swaaramusic-backend.herokuapp.com/testimonial/delete`,
-        {
-          testimonialId: testimonialId,
-        }
-      );
+      await axios.post(`${API}/testimonial/delete`, {
+        testimonialId: testimonialId,
+      });
       setIsLoading(false);
       alert("Testimonial has been deleted!");
       window.location.reload(false);
@@ -194,27 +181,24 @@ const Admin = () => {
 
   const updateHomeSliderHandle = async () => {
     const formData = new FormData();
-    formData.append("picture1", picture1);
-    formData.append("picture2", picture2);
-    formData.append("picture3", picture3);
-    formData.append("picture4", picture4);
-    formData.append("picture5", picture5);
-    formData.append("title1", title1);
-    formData.append("title2", title2);
-    formData.append("title3", title3);
-    formData.append("title4", title4);
-    formData.append("title5", title5);
-    formData.append("text1", text1);
-    formData.append("text2", text2);
-    formData.append("text3", text3);
-    formData.append("text4", text4);
-    formData.append("text5", text5);
+    formData.append("picture1", picture1 || "");
+    formData.append("picture2", picture2 || "");
+    formData.append("picture3", picture3 || "");
+    formData.append("picture4", picture4 || "");
+    formData.append("picture5", picture5 || "");
+    formData.append("title1", title1 || "");
+    formData.append("title2", title2 || "");
+    formData.append("title3", title3 || "");
+    formData.append("title4", title4 || "");
+    formData.append("title5", title5 || "");
+    formData.append("text1", text1 || "");
+    formData.append("text2", text2 || "");
+    formData.append("text3", text3 || "");
+    formData.append("text4", text4 || "");
+    formData.append("text5", text5 || "");
     try {
       setIsLoading(true);
-      await axios.post(
-        `https://swaaramusic-backend.herokuapp.com/pictures/hero/update`,
-        formData
-      );
+      await axios.post(`${API}/pictures/hero/update`, formData);
       setIsLoading(false);
       alert("Home Slider has been updated ! ");
     } catch (error) {
@@ -238,10 +222,7 @@ const Admin = () => {
 
     try {
       setIsLoading(true);
-      await axios.post(
-        `https://swaaramusic-backend.herokuapp.com/about/update`,
-        formData
-      );
+      await axios.post(`${API}/about/update`, formData);
       setIsLoading(false);
       alert("Section updated ! ");
     } catch (error) {
@@ -282,13 +263,13 @@ const Admin = () => {
             >
               Return to Admin
             </button>
-            {data.map((img) => {
+            {data?.map((img) => {
               return (
                 <div>
-                  <img src={img.url} alt={img.public_id} />
+                  <img src={img?.url} alt={img?.public_id} />
                   <button
                     className="btn-burgundy"
-                    onClick={() => deleteHandle({ publicId: img.public_id })}
+                    onClick={() => deleteHandle({ publicId: img?.public_id })}
                   >
                     Delete
                   </button>

@@ -9,6 +9,7 @@ import Loader from "../components/Utility/Loader";
 // Meta
 import Metadecorator from "../components/Utility/MetaDecorators";
 import tags from "../assets/json/meta_tags/about.json";
+import { API } from "../config";
 
 const Contact = () => {
   // States
@@ -32,10 +33,7 @@ const Contact = () => {
       formData.append("subject", subject);
       formData.append("message", message);
       formData.append("phone", phone);
-      const response = await axios.post(
-        "https://swaaramusic-backend.herokuapp.com/mail/contact",
-        formData
-      );
+      const response = await axios.post(`${API}/mail/contact`, formData);
       if (response.data === "Email sent!") {
         setIsSent(true);
         setIsLoading(false);
@@ -51,7 +49,11 @@ const Contact = () => {
 
   return (
     <div className="contact">
-      <Metadecorator title={tags.pagetitle} description={tags.pagedescription} tags={tags.tags}/>
+      <Metadecorator
+        title={tags.pagetitle}
+        description={tags.pagedescription}
+        tags={tags.tags}
+      />
       {isLoading && <Loader />}
       <div className="contact__container">
         <div className="contact__info">

@@ -17,6 +17,7 @@ import profile from "../assets/img/profile.jpg";
 // Meta
 import Metadecorator from "../components/Utility/MetaDecorators";
 import tags from "../assets/json/meta_tags/home.json";
+import { API } from "../config";
 
 const Home = () => {
   const history = useHistory();
@@ -29,17 +30,11 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://swaaramusic-backend.herokuapp.com/testimonials`
-        );
+        const response = await axios.get(`${API}/testimonials`);
         setTestimonials(response.data);
-        const response1 = await axios.get(
-          `https://swaaramusic-backend.herokuapp.com/pictures/hero`
-        );
+        const response1 = await axios.get(`${API}/pictures/hero`);
         setHeroSliders(response1.data);
-        const response2 = await axios.get(
-          `https://swaaramusic-backend.herokuapp.com/abouts`
-        );
+        const response2 = await axios.get(`${API}/abouts`);
         setAbout(response2.data);
 
         setIsLoading(false);
@@ -105,10 +100,22 @@ const Home = () => {
       </Carousel>
       <div className="home__about">
         <img src={logoPurple} alt="Swaraa Music Logo" />
-
-        {about.map((about) => {
-          return (
-            about._id === "61b35973d330521b079d16c7" && (
+        <div>
+          <h1 className="txt-header-purple">{about[0]?.title}</h1>
+          <h2 className="txt-description-black-bold">{about[0]?.subTitle}</h2>
+          <p className="txt-description-black">{about[0]?.text}</p>
+          <button
+            data-aos="fade"
+            className="btn-burgundy"
+            onClick={() => history.push("/about")}
+          >
+            Get a Quote
+          </button>
+        </div>
+        {/* <div>
+          {about.map((about) => {
+            return (
+              // about._id === "61b35973d330521b079d16c7" && (
               <div>
                 <h1 className="txt-header-purple">{about.title}</h1>
                 <h2 className="txt-description-black-bold">{about.subTitle}</h2>
@@ -121,9 +128,10 @@ const Home = () => {
                   Learn More
                 </button>
               </div>
-            )
-          );
-        })}
+            );
+            // );
+          })}
+        </div> */}
       </div>
       <div className="home__testimonials bg-pink-purple-gradient">
         <Carousel
@@ -147,24 +155,38 @@ const Home = () => {
       </div>
       <div className="home__about">
         <img src={profile} alt="Swaraa Music Singer" />
-        {about.map((about) => {
+
+        <div>
+          <h1 className="txt-header-purple">{about[0]?.title}</h1>
+          <h2 className="txt-description-black-bold">{about[0]?.subTitle}</h2>
+          <p className="txt-description-black">{about[0]?.text}</p>
+          <button
+            data-aos="fade"
+            className="btn-burgundy"
+            onClick={() => history.push("/about")}
+          >
+            Get a Quote
+          </button>
+        </div>
+
+        {/* {about.map((about) => {
           return (
-            about._id === "61b35c566805e98e15cef2ff" && (
-              <div>
-                <h1 className="txt-header-purple">{about.title}</h1>
-                <h2 className="txt-description-black-bold">{about.subTitle}</h2>
-                <p className="txt-description-black">{about.text}</p>
-                <button
-                  data-aos="fade"
-                  className="btn-burgundy"
-                  onClick={() => history.push("/about")}
-                >
-                  Get a Quote
-                </button>
-              </div>
-            )
+            // about._id === "61b35c566805e98e15cef2ff" && (
+            <div>
+              <h1 className="txt-header-purple">{about.title}</h1>
+              <h2 className="txt-description-black-bold">{about.subTitle}</h2>
+              <p className="txt-description-black">{about.text}</p>
+              <button
+                data-aos="fade"
+                className="btn-burgundy"
+                onClick={() => history.push("/about")}
+              >
+                Get a Quote
+              </button>
+            </div>
+            // )
           );
-        })}
+        })} */}
       </div>
       <Footer />
     </div>

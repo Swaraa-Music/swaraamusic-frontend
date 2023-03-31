@@ -5,6 +5,7 @@ import axios from "axios";
 // Components
 import Loader from "../components/Utility/Loader";
 import Footer from "../components/Footer";
+import { API } from "../config";
 
 const Past = () => {
   // States
@@ -16,9 +17,7 @@ const Past = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://swaaramusic-backend.herokuapp.com/pictures`
-        );
+        const response = await axios.get(`${API}/pictures`);
         setData(response.data.resources);
         console.log(response.data.resources);
         setIsLoading(false);
