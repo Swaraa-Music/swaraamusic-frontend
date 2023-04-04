@@ -1,10 +1,11 @@
 // Packages
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 // Components
 import Loader from "../components/Utility/Loader";
 import { API } from "../config";
+import isEqual from "react-fast-compare";
 
 const Admin = () => {
   // States
@@ -579,4 +580,5 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+// export default Admin;
+export default React.memo(Admin, isEqual);

@@ -1,11 +1,12 @@
 // Packages
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 // Components
 import Loader from "../components/Utility/Loader";
 import Footer from "../components/Footer";
 import { API } from "../config";
+import isEqual from "react-fast-compare";
 
 const Past = () => {
   // States
@@ -62,4 +63,5 @@ const Past = () => {
   );
 };
 
-export default Past;
+// export default Past;
+export default React.memo(Past, isEqual);

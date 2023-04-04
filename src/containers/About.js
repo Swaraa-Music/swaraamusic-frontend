@@ -1,6 +1,6 @@
 // Packages
 import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 // Components
@@ -14,6 +14,7 @@ import logo from "../assets/img/logo_purple_transparent.png";
 import Metadecorator from "../components/Utility/MetaDecorators";
 import tags from "../assets/json/meta_tags/about.json";
 import { API } from "../config";
+import isEqual from "react-fast-compare";
 
 const About = () => {
   const history = useHistory();
@@ -76,4 +77,5 @@ const About = () => {
   );
 };
 
-export default About;
+// export default About;
+export default React.memo(About, isEqual);

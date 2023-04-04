@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 // Meta
 import Metadecorator from "../components/Utility/MetaDecorators";
 import tags from "../assets/json/meta_tags/gallery.json";
+import React from "react";
+import isEqual from "react-fast-compare";
 
 const Gallery = () => {
   return (
@@ -36,4 +38,5 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+// export default Gallery;
+export default React.memo(Gallery, isEqual);

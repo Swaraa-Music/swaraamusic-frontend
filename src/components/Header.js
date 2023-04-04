@@ -53,14 +53,22 @@ const Header = () => {
           onClick={() => history.push("/")}
         />
         <div>
-          <p>
-            {" "}
-            <a href="tel:07866 366 197">07866 366 197</a> or{" "}
-            <a href="tel:07944 587 606">07944 587 606</a>
+          <p style={{ fontSize: "18px" }}>
+            <a href="tel:07866 366 197" style={{ fontSize: "18px" }}>
+              07866 366 197
+            </a>{" "}
+            or
+            <a
+              href="tel:07944 587 606"
+              style={{ fontSize: "18px", marginLeft: "6px" }}
+            >
+              07944 587 606
+            </a>
           </p>
-          <p>
-            {" "}
-            <a href="mailto:info@swaraamusic.com">info@swaraamusic.com</a>{" "}
+          <p style={{ fontSize: "18px" }}>
+            <a href="mailto:info@swaraamusic.com" style={{ fontSize: "18px" }}>
+              info@swaraamusic.com
+            </a>
           </p>
         </div>
       </div>

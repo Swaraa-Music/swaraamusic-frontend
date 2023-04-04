@@ -1,10 +1,11 @@
 // Packages
 import axios from "axios";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
 import Loader from "../components/Utility/Loader";
 import Footer from "../components/Footer";
+import isEqual from "react-fast-compare";
 
 const VideoTestimonials = () => {
   // States
@@ -57,4 +58,5 @@ const VideoTestimonials = () => {
   );
 };
 
-export default VideoTestimonials;
+// export default VideoTestimonials;
+export default React.memo(VideoTestimonials, isEqual);

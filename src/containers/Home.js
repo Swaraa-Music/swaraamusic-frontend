@@ -18,6 +18,8 @@ import profile from "../assets/img/profile.jpg";
 import Metadecorator from "../components/Utility/MetaDecorators";
 import tags from "../assets/json/meta_tags/home.json";
 import { API } from "../config";
+import isEqual from "react-fast-compare";
+import react from "react";
 
 const Home = () => {
   const history = useHistory();
@@ -192,4 +194,5 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+// export default Home;
+export default react.memo(Home, isEqual);

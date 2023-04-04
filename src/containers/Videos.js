@@ -1,6 +1,6 @@
 // Packages
 import axios from "axios";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
 import Loader from "../components/Utility/Loader";
@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 // Meta
 import Metadecorator from "../components/Utility/MetaDecorators";
 import tags from "../assets/json/meta_tags/videos.json";
-
+import isEqual from "react-fast-compare";
 
 const Videos = () => {
   // States
@@ -35,7 +35,11 @@ const Videos = () => {
     <Loader />
   ) : (
     <div className="videos bg-pink-purple-gradient">
-      <Metadecorator title={tags.pagetitle} description={tags.pagedescription} tags={tags.tags}/>
+      <Metadecorator
+        title={tags.pagetitle}
+        description={tags.pagedescription}
+        tags={tags.tags}
+      />
       <div className="videos__showreel__container">
         {/* <h1 className="txt-header-white">Showreel</h1>
           <video
@@ -63,4 +67,5 @@ const Videos = () => {
   );
 };
 
-export default Videos;
+// export default Videos;
+export default React.memo(Videos, isEqual);

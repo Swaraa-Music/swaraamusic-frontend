@@ -1,6 +1,6 @@
 // Packages
 import axios from "axios";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
 import Loader from "../components/Utility/Loader";
@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 // img
 import stars from "../assets/img/5-star-rating.png";
 import { API } from "../config";
+import isEqual from "react-fast-compare";
 
 const Testimonials = () => {
   // States
@@ -47,4 +48,5 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials;
+// export default Testimonials;
+export default React.memo(Testimonials, isEqual);

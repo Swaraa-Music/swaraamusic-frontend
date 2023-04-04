@@ -1,5 +1,5 @@
 // Packages
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 // Components
@@ -11,6 +11,7 @@ import Metadecorator from "../components/Utility/MetaDecorators";
 import tags from "../assets/json/meta_tags/about.json";
 import { API } from "../config";
 import emailjs from "emailjs-com";
+import isEqual from "react-fast-compare";
 
 const Contact = () => {
   // States
@@ -187,4 +188,5 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+// export default Contact;
+export default React.memo(Contact, isEqual);

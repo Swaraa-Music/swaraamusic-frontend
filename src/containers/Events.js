@@ -7,12 +7,18 @@ import Footer from "../components/Footer";
 // Meta
 import Metadecorator from "../components/Utility/MetaDecorators";
 import tags from "../assets/json/meta_tags/events.json";
+import React from "react";
+import isEqual from "react-fast-compare";
 
 const Events = () => {
   const history = useHistory();
   return (
     <div className="events bg-pink-purple-gradient">
-      <Metadecorator title={tags.pagetitle} description={tags.pagedescription} tags={tags.tags}/>
+      <Metadecorator
+        title={tags.pagetitle}
+        description={tags.pagedescription}
+        tags={tags.tags}
+      />
       <div className="events__container">
         <div
           className="event"
@@ -92,4 +98,5 @@ const Events = () => {
   );
 };
 
-export default Events;
+// export default Events;
+export default React.memo(Events, isEqual);
