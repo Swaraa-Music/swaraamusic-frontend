@@ -30,7 +30,7 @@ const Header = () => {
             <i className="fab fa-instagram"></i>
           </a>
           <a
-            href="https://twitter.com/swaraamusiclive"
+            href="https://twitter.com/swaramusic"
             target="_blank"
             rel="noreferrer"
           >

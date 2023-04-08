@@ -1403,3 +1403,8 @@ body {
     font-size: 22px;
   }
 }
+
+.carousel.carousel-slider .control-arrow {
+  font-size: 60px !important;
+  padding: 10px !important;
+}
