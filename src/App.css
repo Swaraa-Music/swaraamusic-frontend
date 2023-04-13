@@ -252,6 +252,12 @@ body {
   z-index: 20;
 }
 
+@media screen and (max-width: 1025px) {
+  .header__menu__container > a {
+    font-size: 16px !important;
+  }
+}
+
 .header__clicked {
   border-bottom: solid var(--clr--purple) 2px;
 }
