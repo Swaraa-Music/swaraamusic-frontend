@@ -257,6 +257,11 @@ body {
     font-size: 16px !important;
   }
 }
+@media screen and (max-width: 1025px) {
+  .header__menu__container > a {
+    font-size: 10px !important;
+  }
+}
 
 .header__clicked {
   border-bottom: solid var(--clr--purple) 2px;
