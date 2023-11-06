@@ -8,20 +8,8 @@ import "aos/dist/aos.css";
 import Loadable from "react-loadable";
 
 // Components
-import Header from "./components/Header";
 import WhatsApp from "./components/Utility/WhatsApp";
-
-// Containers
-// import Home from "./containers/Home";
-// import About from "./containers/About";
-// import Gallery from "./containers/Gallery";
-// import Videos from "./containers/Videos";
-// import Contact from "./containers/Contact";
-// import Admin from "./containers/Admin";
-// import Events from "./containers/Events";
-// import Past from "./containers/Past";
-// import Testimonials from "./containers/Testimonials";
-// import VideoTestimonials from "./containers/VideoTestimonials";
+import isEqual from "react-fast-compare";
 
 const Home = React.lazy(() => import("./containers/Home"));
 const About = React.lazy(() => import("./containers/About"));
@@ -45,7 +33,6 @@ const AsyncComponent = Loadable({
 
 function App() {
   useEffect(() => {
-    // Scroll Animation function usin AOS package
     Aos.init({ duration: 800 });
   }, []);
   return (
@@ -90,4 +77,4 @@ function App() {
   );
 }
 
-export default App;
+export default React.memo(App, isEqual);

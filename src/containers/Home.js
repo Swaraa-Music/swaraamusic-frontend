@@ -10,7 +10,7 @@ import Loader from "../components/Utility/Loader";
 import Footer from "../components/Footer";
 
 // img
-import logoPurple from "../assets/img/logo_purple_transparent.png";
+// import logoPurple from "../assets/img/logo_purple_transparent.png";
 import stars from "../assets/img/5-star-rating.png";
 import profile from "../assets/img/profile.jpg";
 
@@ -29,26 +29,48 @@ const Home = () => {
   const [heroSliders, setHeroSliders] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [about, setAbout] = useState();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response1 = await axios.get(`${API}/pictures/hero`);
+  //       setHeroSliders(response1.data);
+  //       const response = await axios.get(`${API}/testimonials`);
+  //       setTestimonials(response.data);
+  //       const response2 = await axios.get(`${API}/abouts`);
+  //       setAbout(response2.data);
+
+  //       setIsLoading(false);
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API}/testimonials`);
-        setTestimonials(response.data);
-        const response1 = await axios.get(`${API}/pictures/hero`);
-        setHeroSliders(response1.data);
-        const response2 = await axios.get(`${API}/abouts`);
-        setAbout(response2.data);
+        const [sliderResponse, testimonialsResponse, aboutResponse] =
+          await Promise.all([
+            axios.get(`${API}/pictures/hero`),
+            axios.get(`${API}/testimonials`),
+            axios.get(`${API}/abouts`),
+          ]);
 
+        setHeroSliders(sliderResponse.data);
+        setTestimonials(testimonialsResponse.data);
+        setAbout(aboutResponse.data);
         setIsLoading(false);
-
-        console.log(response.data);
       } catch (error) {
         console.log(error.message);
+        setIsLoading(false);
       }
     };
     fetchData();
   }, []);
-  console.log(tags);
+
+  // console.log(tags);
   return isLoading ? (
     <Loader />
   ) : (
@@ -77,12 +99,10 @@ const Home = () => {
                   className="hero__logo"
                 /> */}
                 <div>
-                  {" "}
-                  <h1 className="hero__title">{hero.title}</h1>
+                  <h1 className="hero__title">{hero?.title}</h1>
                 </div>
                 <div>
-                  {" "}
-                  <h2 className="hero__description">{hero.text}</h2>
+                  <h2 className="hero__description">{hero?.text}</h2>
                   <button
                     className="btn-burgundy"
                     onClick={() => history.push("/contact")}
@@ -92,15 +112,15 @@ const Home = () => {
                 </div>
               </div>
               <img
-                src={hero.picture}
-                alt={hero.picture}
+                src={hero?.picture}
+                alt={hero?.picture}
                 className="hero__img"
               />
             </div>
           );
         })}
       </Carousel>
-      <div className="home__about">
+      {/* <div className="home__about">
         <img src={logoPurple} alt="Swaraa Music Logo" />
         <div>
           <h1 className="txt-header-purple">{about[0]?.title}</h1>
@@ -114,27 +134,8 @@ const Home = () => {
             Get a Quote
           </button>
         </div>
-        {/* <div>
-          {about.map((about) => {
-            return (
-              // about._id === "61b35973d330521b079d16c7" && (
-              <div>
-                <h1 className="txt-header-purple">{about.title}</h1>
-                <h2 className="txt-description-black-bold">{about.subTitle}</h2>
-                <p className="txt-description-black">{about.text}</p>
-                <button
-                  data-aos="fade"
-                  className="btn-burgundy"
-                  onClick={() => history.push("/about")}
-                >
-                  Learn More
-                </button>
-              </div>
-            );
-            // );
-          })}
-        </div> */}
-      </div>
+     
+      </div> */}
       <div className="home__testimonials bg-pink-purple-gradient">
         <Carousel
           showThumbs={false}
@@ -142,13 +143,19 @@ const Home = () => {
           showStatus={false}
           autoPlay={true}
           infiniteLoop={true}
+          showArrows={true}
         >
-          {testimonials.map((testimonial, index) => {
+          {testimonials?.map((testimonial, index) => {
             return (
               <div className="home__testimonial">
-                <h1>" {testimonial.testimonial} "</h1>
-                <h2>{testimonial.author}</h2>
-                <h3>{testimonial.event}</h3>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: testimonial?.testimonial,
+                  }}
+                  className="home_testimonial_text"
+                ></div>
+                <h2>{testimonial?.author}</h2>
+                <h3>{testimonial?.event}</h3>
                 <img src={stars} alt={stars} />
               </div>
             );
