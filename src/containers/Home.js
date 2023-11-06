@@ -4,6 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import logo from "../assets/img/logo_purple_transparent.png";
 
 // Components
 import Loader from "../components/Utility/Loader";
@@ -29,24 +30,6 @@ const Home = () => {
   const [heroSliders, setHeroSliders] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [about, setAbout] = useState();
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response1 = await axios.get(`${API}/pictures/hero`);
-  //       setHeroSliders(response1.data);
-  //       const response = await axios.get(`${API}/testimonials`);
-  //       setTestimonials(response.data);
-  //       const response2 = await axios.get(`${API}/abouts`);
-  //       setAbout(response2.data);
-
-  //       setIsLoading(false);
-  //       console.log(response.data);
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -163,12 +146,17 @@ const Home = () => {
         </Carousel>
       </div>
       <div className="home__about">
-        <img src={profile} alt="Swaraa Music Singer" />
-
         <div>
+          <img
+            src={profile}
+            alt="Swaraa Music Singer"
+            style={{ width: "90%" }}
+          />
+        </div>
+        <div className="">
           <h1 className="txt-header-purple">{about[0]?.title}</h1>
           <h2 className="txt-description-black-bold">{about[0]?.subTitle}</h2>
-          <p className="txt-description-black">{about[0]?.text}</p>
+          <p className="txt-description-black home_para">{about[0]?.text}</p>
           <button
             data-aos="fade"
             className="btn-burgundy"
@@ -177,25 +165,21 @@ const Home = () => {
             Get a Quote
           </button>
         </div>
+      </div>
 
-        {/* {about.map((about) => {
-          return (
-            // about._id === "61b35c566805e98e15cef2ff" && (
-            <div>
-              <h1 className="txt-header-purple">{about.title}</h1>
-              <h2 className="txt-description-black-bold">{about.subTitle}</h2>
-              <p className="txt-description-black">{about.text}</p>
-              <button
-                data-aos="fade"
-                className="btn-burgundy"
-                onClick={() => history.push("/about")}
-              >
-                Get a Quote
-              </button>
-            </div>
-            // )
-          );
-        })} */}
+      <div className="about__container">
+        <img src={logo} alt={logo} data-aos="fade" />
+        {/* <h1 className="txt-header-purple">{about[1]?.title}</h1> */}
+        <h2 className="txt-description-black-bold">{about[1]?.subTitle}</h2>
+        <p className="txt-description-black">{about[1]?.text}</p>
+
+        <button
+          data-aos="fade"
+          className="btn-burgundy"
+          onClick={() => history.push("/contact")}
+        >
+          Get your quote
+        </button>
       </div>
       <Footer />
     </div>

@@ -10,7 +10,10 @@ import isEqual from "react-fast-compare";
 const Admin = () => {
   // States
   const [isLoading, setIsLoading] = useState(true);
-  const [picture, setPicture] = useState("");
+  const [pictures, setPicture] = useState([]);
+
+  console.log(pictures, "dfd");
+
   const [security, setSecurity] = useState(true);
   const [password, setPassword] = useState("");
   const [author, setAuthor] = useState("");
@@ -108,23 +111,42 @@ const Admin = () => {
     fetchData();
   }, []);
 
-  // Upload picture
-  const uploadHandle = async () => {
-    try {
-      setIsLoading(true);
+  const uploadHandle = () => {
+    const folderName = "Past Gigs"; // Define the folder name
+
+    const uploads = pictures?.map((file) => {
       const formData = new FormData();
-      formData.append("picture", picture);
-      await axios.post(`${API}/picture/create`, formData);
+      formData.append("file", file);
+      formData.append("upload_preset", "adimbwct");
+      formData.append("timestamp", Math.floor(Date.now() / 1000)); // Update timestamp logic
+      formData.append("folder", `swaraamusic/${folderName}`); // Include the folder path
 
-      setIsLoading(false);
-      alert("Your picture has been uploaded!");
-      window.location.reload(false);
-    } catch (error) {
-      setIsLoading(false);
-      alert(error);
-    }
+      const URL = `https://api.cloudinary.com/v1_1/dzlpbjxhv/image/upload`;
+      setIsLoading(true);
+
+      return axios
+        .post(URL, formData)
+        .then((response) => {
+          const { data } = response;
+          const fileURL = data.secure_url;
+
+          console.log(fileURL);
+          setIsLoading(false);
+          window.location.reload(false);
+        })
+        .catch((error) => {
+          console.error("Error uploading image:", error);
+        });
+    });
+
+    Promise.all(uploads)
+      .then(() => {
+        console.log("Upload completed");
+      })
+      .catch((error) => {
+        console.error("Error uploading images:", error);
+      });
   };
-
   // Upload picture
   const uploadTestimonialHandle = async () => {
     try {
@@ -232,6 +254,12 @@ const Admin = () => {
     }
   };
 
+  // Handle the selected files
+  const handleFileChange = (event) => {
+    const selectedFiles = event.target.files;
+    setPicture([...selectedFiles]); // Assuming 'pictures' is a state variable
+  };
+
   return isLoading ? (
     <Loader />
   ) : (
@@ -248,8 +276,9 @@ const Admin = () => {
             <button
               className="btn-burgundy"
               onClick={
-                password === "Ishaani123#"
-                  ? () => setSecurity(false)
+                password === "1"
+                  ? // password === "Ishaani123#"
+                    () => setSecurity(false)
                   : () => alert("Wrong Password")
               }
             >
@@ -285,9 +314,8 @@ const Admin = () => {
               <input
                 type="file"
                 accept="image/*"
-                onChange={(e) => {
-                  setPicture(e.target.files[0]);
-                }}
+                multiple
+                onChange={handleFileChange}
               />
               <button className="btn-burgundy" onClick={() => uploadHandle()}>
                 Upload Picture

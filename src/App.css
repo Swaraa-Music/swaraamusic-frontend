@@ -596,6 +596,13 @@ body {
   white-space: pre-wrap;
 }
 
+.home_para {
+  margin-bottom: 20px;
+  max-width: 100%;
+  text-align: left;
+  white-space: pre-wrap;
+}
+
 .about__container > button {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -1262,7 +1269,9 @@ body {
   .home__about {
     flex-direction: column;
     padding: 50px 30px;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
   }
   .home__about > img {
     display: none;
