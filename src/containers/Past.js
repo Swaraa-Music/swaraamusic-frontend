@@ -20,7 +20,6 @@ const Past = () => {
       try {
         const response = await axios.get(`${API}/pictures`);
         setData(response.data.resources);
-        console.log(response.data.resources);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -30,7 +29,6 @@ const Past = () => {
   }, []);
   // Modal Handle
   const modalHandle = (props) => {
-    console.log(props.info);
     setModalInfo(props.info);
     setModal(true);
   };

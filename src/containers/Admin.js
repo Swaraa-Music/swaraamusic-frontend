@@ -11,9 +11,6 @@ const Admin = () => {
   // States
   const [isLoading, setIsLoading] = useState(true);
   const [pictures, setPicture] = useState([]);
-
-  console.log(pictures, "dfd");
-
   const [security, setSecurity] = useState(true);
   const [password, setPassword] = useState("");
   const [author, setAuthor] = useState("");
@@ -23,6 +20,14 @@ const Admin = () => {
   const [data, setData] = useState("");
   const [data1, setData1] = useState("");
   const [testimonialId, setTestimonialId] = useState("");
+
+  // Home page
+  const [homeTitle1, setHomeTitle1] = useState("");
+  const [homeText1, setHomeText1] = useState("");
+  const [homeSubtitle1, setHomeSubtitle1] = useState("");
+  const [homeTitle2, setHomeTitle2] = useState("");
+  const [homeText2, setHomeText2] = useState("");
+  const [homeSubtitle2, setHomeSubtitle2] = useState("");
 
   // About States
   const [aboutTitle1, setAboutTitle1] = useState("");
@@ -61,14 +66,26 @@ const Admin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API}/pictures`);
-        const response1 = await axios.get(`${API}/testimonials`);
+        const [response, response1, response2, response3, response4] =
+          await Promise.all([
+            axios.get(`${API}/pictures`),
+            axios.get(`${API}/testimonials`),
+            axios.get(`${API}/pictures/hero`),
+            axios.get(`${API}/abouts`),
+            axios.get(`${API}/home`),
+          ]);
 
-        const response2 = await axios.get(`${API}/pictures/hero`);
-        const response3 = await axios.get(`${API}/abouts`);
         setData(response?.data?.resources);
         setData1(response1?.data);
         setTestimonialId(response1?.data[0]?._id);
+
+        // home page data
+        setHomeText1(response4?.data[0]?.text || "");
+        setHomeText2(response4?.data[1]?.text || "");
+        setHomeTitle1(response4?.data[0]?.title || "");
+        setHomeTitle2(response4?.data[1]?.title || "");
+        setHomeSubtitle1(response4?.data[0]?.subTitle || "");
+        setHomeSubtitle2(response4?.data[1]?.subTitle || "");
 
         // Setting About Data
         setAboutText1(response3?.data[0]?.text);
@@ -169,7 +186,6 @@ const Admin = () => {
 
   // Delete Picture
   const deleteHandle = async (props) => {
-    console.log(props.publicId);
     try {
       setIsLoading(true);
       await axios.post(`${API}/picture/delete`, {
@@ -185,7 +201,6 @@ const Admin = () => {
 
   // Delete Tetsimonial
   const deleteTestimonialHandle = async () => {
-    console.log(testimonialId);
     try {
       setIsLoading(true);
       await axios.post(`${API}/testimonial/delete`, {
@@ -247,7 +262,28 @@ const Admin = () => {
       setIsLoading(true);
       await axios.post(`${API}/about/update`, formData);
       setIsLoading(false);
-      alert("Section updated ! ");
+      alert("About page content updated ! ");
+    } catch (error) {
+      setIsLoading(false);
+      alert(error);
+    }
+  };
+
+  // Update Home
+  const homeHandle = async () => {
+    const formData = new FormData();
+    formData.append("homeText1", homeText1 ? homeText1 : "");
+    formData.append("homeSubtitle1", homeSubtitle1 ? homeSubtitle1 : "");
+    formData.append("homeTitle1", homeTitle1 ? homeTitle1 : "");
+    formData.append("homeText2", homeText2 ? homeText2 : "");
+    formData.append("homeSubtitle2", homeSubtitle2 ? homeSubtitle2 : "");
+    formData.append("homeTitle2", homeTitle2 ? homeTitle2 : "");
+
+    try {
+      setIsLoading(true);
+      await axios.post(`${API}/home/update`, formData);
+      setIsLoading(false);
+      alert("Home Section is updated!");
     } catch (error) {
       setIsLoading(false);
       alert(error);
@@ -533,11 +569,58 @@ const Admin = () => {
                 Update Home Slider
               </button>
             </label>
-            <label className="txt-header-purple">Change About Sections</label>
-
+            <label className="txt-header-purple">Home page</label>
             <div className="txt-header-purple admin__about">
               <div>
                 <label className="txt-header-purple">Home Top</label>
+
+                <h2 className="txt-description-black">Title</h2>
+
+                <input
+                  type="text"
+                  value={homeTitle1}
+                  onChange={(e) => setHomeTitle1(e.target.value)}
+                />
+
+                <h2 className="txt-description-black">Sub-title</h2>
+                <textarea
+                  type="text"
+                  value={homeSubtitle1}
+                  onChange={(e) => setHomeSubtitle1(e.target.value)}
+                ></textarea>
+                <h2 className="txt-description-black">Text</h2>
+                <textarea
+                  value={homeText1}
+                  onChange={(e) => setHomeText1(e.target.value)}
+                ></textarea>
+              </div>
+              <div>
+                <label className="txt-header-purple">Home Bottom</label>
+
+                <h2 className="txt-description-black">Sub-title</h2>
+                <textarea
+                  type="text"
+                  value={homeSubtitle2}
+                  onChange={(e) => setHomeSubtitle2(e.target.value)}
+                ></textarea>
+                <h2 className="txt-description-black">Text</h2>
+                <textarea
+                  value={homeText2}
+                  onChange={(e) => setHomeText2(e.target.value)}
+                ></textarea>
+              </div>
+            </div>
+
+            <button className="btn-burgundy" onClick={() => homeHandle()}>
+              Update Home Content
+            </button>
+
+            <br />
+            <br />
+            <label className="txt-header-purple">Change About Sections</label>
+            <div className="txt-header-purple admin__about">
+              <div>
+                <label className="txt-header-purple">About 1st</label>
 
                 <h2 className="txt-description-black">Title</h2>
 
@@ -560,7 +643,7 @@ const Admin = () => {
                 ></textarea>
               </div>
               <div>
-                <label className="txt-header-purple">Home Bottom</label>
+                <label className="txt-header-purple">About 2nd</label>
 
                 <h2 className="txt-description-black">Sub-title</h2>
                 <textarea
@@ -575,7 +658,7 @@ const Admin = () => {
                 ></textarea>
               </div>
               <div>
-                <label className="txt-header-purple">About Page</label>
+                <label className="txt-header-purple">About 3rd</label>
 
                 <h2 className="txt-description-black">Title</h2>
 

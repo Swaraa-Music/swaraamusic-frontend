@@ -19,8 +19,6 @@ const VideoTestimonials = () => {
         );
         setData(response.data);
         setIsLoading(false);
-
-        console.log(response.data);
       } catch (error) {
         console.log(error.message);
       }

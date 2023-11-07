@@ -30,23 +30,29 @@ const Home = () => {
   const [heroSliders, setHeroSliders] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [about, setAbout] = useState();
+  const [home, setHome] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [sliderResponse, testimonialsResponse, aboutResponse] =
-          await Promise.all([
-            axios.get(`${API}/pictures/hero`),
-            axios.get(`${API}/testimonials`),
-            axios.get(`${API}/abouts`),
-          ]);
+        const [
+          sliderResponse,
+          testimonialsResponse,
+          aboutResponse,
+          homeResponse,
+        ] = await Promise.all([
+          axios.get(`${API}/pictures/hero`),
+          axios.get(`${API}/testimonials`),
+          axios.get(`${API}/abouts`),
+          axios.get(`${API}/home`),
+        ]);
 
-        setHeroSliders(sliderResponse.data);
-        setTestimonials(testimonialsResponse.data);
-        setAbout(aboutResponse.data);
+        setHeroSliders(sliderResponse?.data);
+        setTestimonials(testimonialsResponse?.data);
+        setAbout(aboutResponse?.data);
+        setHome(homeResponse?.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.message);
         setIsLoading(false);
       }
     };
@@ -154,9 +160,9 @@ const Home = () => {
           />
         </div>
         <div className="">
-          <h1 className="txt-header-purple">{about[0]?.title}</h1>
-          <h2 className="txt-description-black-bold">{about[0]?.subTitle}</h2>
-          <p className="txt-description-black home_para">{about[0]?.text}</p>
+          <h1 className="txt-header-purple">{home[0]?.title}</h1>
+          <h2 className="txt-description-black-bold">{home[0]?.subTitle}</h2>
+          <p className="txt-description-black home_para">{home[0]?.text}</p>
           <button
             data-aos="fade"
             className="btn-burgundy"
@@ -170,8 +176,8 @@ const Home = () => {
       <div className="about__container">
         <img src={logo} alt={logo} data-aos="fade" />
         {/* <h1 className="txt-header-purple">{about[1]?.title}</h1> */}
-        <h2 className="txt-description-black-bold">{about[1]?.subTitle}</h2>
-        <p className="txt-description-black">{about[1]?.text}</p>
+        <h2 className="txt-description-black-bold">{home[1]?.subTitle}</h2>
+        <p className="txt-description-black">{home[1]?.text}</p>
 
         <button
           data-aos="fade"
