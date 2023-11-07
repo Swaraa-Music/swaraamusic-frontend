@@ -312,7 +312,7 @@ const Admin = () => {
             <button
               className="btn-burgundy"
               onClick={
-                password === "1"
+                password === "Ishaani123#"
                   ? // password === "Ishaani123#"
                     () => setSecurity(false)
                   : () => alert("Wrong Password")
