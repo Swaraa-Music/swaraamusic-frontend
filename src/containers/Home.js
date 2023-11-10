@@ -71,6 +71,7 @@ const Home = () => {
         infiniteLoop={true}
         transitionTime={1000}
         interval={4000}
+        swipeable={false}
       >
         {heroSliders.map((hero, index) => {
           return (
