@@ -29,27 +29,20 @@ const Home = () => {
   const [testimonials, setTestimonials] = useState();
   const [heroSliders, setHeroSliders] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [about, setAbout] = useState();
   const [home, setHome] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [
-          sliderResponse,
-          testimonialsResponse,
-          aboutResponse,
-          homeResponse,
-        ] = await Promise.all([
-          axios.get(`${API}/pictures/hero`),
-          axios.get(`${API}/testimonials`),
-          axios.get(`${API}/abouts`),
-          axios.get(`${API}/home`),
-        ]);
+        const [sliderResponse, testimonialsResponse, homeResponse] =
+          await Promise.all([
+            axios.get(`${API}/pictures/hero`),
+            axios.get(`${API}/testimonials`),
+            axios.get(`${API}/home`),
+          ]);
 
         setHeroSliders(sliderResponse?.data);
         setTestimonials(testimonialsResponse?.data);
-        setAbout(aboutResponse?.data);
         setHome(homeResponse?.data);
         setIsLoading(false);
       } catch (error) {
@@ -173,7 +166,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="about__container">
+      <div className="about__container home_mobile_none">
         <img src={logo} alt={logo} data-aos="fade" />
         {/* <h1 className="txt-header-purple">{about[1]?.title}</h1> */}
         <h2 className="txt-description-black-bold">{home[1]?.subTitle}</h2>
