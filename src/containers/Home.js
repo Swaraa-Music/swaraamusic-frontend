@@ -169,7 +169,8 @@ const Home = () => {
         </div>
       </div>
 
-      {/* <div className="about__container home_mobile_none">
+      {/* <div className="about__container home_mobile_none"> */}
+      <div className="about__container ">
         <img src={logo} alt={logo} data-aos="fade" />
 
         <h2 className="txt-description-black-bold">{home[1]?.subTitle}</h2>
@@ -182,7 +183,7 @@ const Home = () => {
         >
           Get your quote
         </button>
-      </div> */}
+      </div>
       <Footer />
     </div>
   );
