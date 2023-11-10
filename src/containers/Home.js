@@ -148,7 +148,7 @@ const Home = () => {
         </Carousel>
       </div> */}
       <div className="home__about">
-        <div>
+        <div className={"home_about_img"}>
           <img
             src={profile}
             alt="Swaraa Music Singer"
