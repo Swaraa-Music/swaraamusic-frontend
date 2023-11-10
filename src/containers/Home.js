@@ -170,20 +170,22 @@ const Home = () => {
       </div>
 
       {/* <div className="about__container home_mobile_none"> */}
-      <div className="about__container ">
-        <img src={logo} alt={logo} data-aos="fade" />
+      {home[1]?.subTitle && (
+        <div className="about__container ">
+          <img src={logo} alt={logo} data-aos="fade" />
 
-        <h2 className="txt-description-black-bold">{home[1]?.subTitle}</h2>
-        <p className="txt-description-black">{home[1]?.text}</p>
+          <h2 className="txt-description-black-bold">{home[1]?.subTitle}</h2>
+          <p className="txt-description-black">{home[1]?.text}</p>
 
-        <button
-          data-aos="fade"
-          className="btn-burgundy"
-          onClick={() => history.push("/contact")}
-        >
-          Get your quote
-        </button>
-      </div>
+          <button
+            data-aos="fade"
+            className="btn-burgundy"
+            onClick={() => history.push("/contact")}
+          >
+            Get your quote
+          </button>
+        </div>
+      )}
       <Footer />
     </div>
   );
