@@ -21,6 +21,7 @@ import tags from "../assets/json/meta_tags/home.json";
 import { API } from "../config";
 import isEqual from "react-fast-compare";
 import react from "react";
+import HomeTestimonials from "./HomeTestimonials";
 
 const Home = () => {
   const history = useHistory();
@@ -118,7 +119,8 @@ const Home = () => {
         </div>
      
       </div> */}
-      <div className="home__testimonials bg-pink-purple-gradient">
+      <HomeTestimonials testimonials={testimonials} />
+      {/* <div className="home__testimonials bg-pink-purple-gradient">
         <Carousel
           showThumbs={false}
           showIndicators={false}
@@ -143,7 +145,7 @@ const Home = () => {
             );
           })}
         </Carousel>
-      </div>
+      </div> */}
       <div className="home__about">
         <div>
           <img

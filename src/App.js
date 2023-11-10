@@ -1,4 +1,5 @@
 import "./App.css";
+import "react-multi-carousel/lib/styles.css";
 
 // Packages
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
