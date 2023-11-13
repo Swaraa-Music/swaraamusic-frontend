@@ -75,7 +75,13 @@ const Admin = () => {
             axios.get(`${API}/home`),
           ]);
 
-        setData(response?.data?.resources);
+        // need to new uploader first show
+        const sortedData = response?.data?.resources.sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        );
+
+        setData(sortedData);
+
         setData1(response1?.data);
         setTestimonialId(response1?.data[0]?._id);
 
@@ -332,7 +338,7 @@ const Admin = () => {
             {data?.map((img) => {
               return (
                 <div>
-                  <img src={img?.url} alt={img?.public_id} />
+                  <img src={img?.url} alt={img?.public_id} loading="lazy" />
                   <button
                     className="btn-burgundy"
                     onClick={() => deleteHandle({ publicId: img?.public_id })}
@@ -399,7 +405,7 @@ const Admin = () => {
                 name="testimonials"
                 onChange={(e) => setTestimonialId(e.target.value)}
               >
-                {data1.map((testimonial) => {
+                {data1?.map((testimonial) => {
                   return (
                     <option value={testimonial._id}>
                       {testimonial.author}

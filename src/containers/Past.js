@@ -19,7 +19,10 @@ const Past = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API}/pictures`);
-        setData(response.data.resources);
+        const sortedData = response.data.resources.sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        );
+        setData(sortedData);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
