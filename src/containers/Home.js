@@ -104,6 +104,30 @@ const Home = () => {
           );
         })}
       </Carousel>
+
+      <div className="home__about">
+        <img
+          src={logo}
+          // src={profile}
+          alt="Swaraa Music Singer"
+          style={{ width: "30%" }}
+        />
+        {/* <div className={"home_about_img"}>
+
+        </div> */}
+        <div className="">
+          <h1 className="txt-header-purple">{home[0]?.title}</h1>
+          <h2 className="txt-description-black-bold">{home[0]?.subTitle}</h2>
+          <p className="txt-description-black home_para">{home[0]?.text}</p>
+          <button
+            data-aos="fade"
+            className="btn-burgundy"
+            onClick={() => history.push("/about")}
+          >
+            Get a Quote
+          </button>
+        </div>
+      </div>
       {/* <div className="home__about">
         <img src={logoPurple} alt="Swaraa Music Logo" />
         <div>

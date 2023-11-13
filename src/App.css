@@ -1314,8 +1314,8 @@ body {
   .home__about {
     flex-direction: column;
     padding: 50px 30px;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
   }
   .home__about > img {
