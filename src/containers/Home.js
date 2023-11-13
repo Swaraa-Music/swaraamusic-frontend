@@ -171,30 +171,32 @@ const Home = () => {
           })}
         </Carousel>
       </div> */}
-      <div className="home__about">
-        <div className={"home_about_img"}>
-          <img
-            src={profile}
-            alt="Swaraa Music Singer"
-            style={{ width: "90%" }}
-          />
+      {home[1]?.subTitle && (
+        <div className="home__about">
+          <div className={"home_about_img"}>
+            <img
+              src={profile}
+              alt="Swaraa Music Singer"
+              style={{ width: "90%" }}
+            />
+          </div>
+          <div className="">
+            {/* <h1 className="txt-header-purple">{home[1]?.title}</h1> */}
+            <h2 className="txt-description-black-bold">{home[1]?.subTitle}</h2>
+            <p className="txt-description-black home_para">{home[1]?.text}</p>
+            <button
+              data-aos="fade"
+              className="btn-burgundy"
+              onClick={() => history.push("/about")}
+            >
+              Get a Quote
+            </button>
+          </div>
         </div>
-        <div className="">
-          <h1 className="txt-header-purple">{home[0]?.title}</h1>
-          <h2 className="txt-description-black-bold">{home[0]?.subTitle}</h2>
-          <p className="txt-description-black home_para">{home[0]?.text}</p>
-          <button
-            data-aos="fade"
-            className="btn-burgundy"
-            onClick={() => history.push("/about")}
-          >
-            Get a Quote
-          </button>
-        </div>
-      </div>
+      )}
 
       {/* <div className="about__container home_mobile_none"> */}
-      {home[1]?.subTitle && (
+      {/* {home[1]?.subTitle && (
         <div className="about__container ">
           <img src={logo} alt={logo} data-aos="fade" />
 
@@ -209,7 +211,7 @@ const Home = () => {
             Get your quote
           </button>
         </div>
-      )}
+      )} */}
       <Footer />
     </div>
   );
