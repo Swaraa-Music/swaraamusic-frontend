@@ -61,6 +61,8 @@ const Admin = () => {
   const [text3, setText3] = useState("");
   const [text4, setText4] = useState("");
   const [text5, setText5] = useState("");
+  const [singleImage, setSingleImage] = useState("");
+  const [homeImageUrl, setHomeImageUrl] = useState("");
 
   // Fetch pictures
   useEffect(() => {
@@ -92,6 +94,7 @@ const Admin = () => {
         setHomeTitle2(response4?.data[1]?.title || "");
         setHomeSubtitle1(response4?.data[0]?.subTitle || "");
         setHomeSubtitle2(response4?.data[1]?.subTitle || "");
+        setHomeImageUrl(response4?.data[1]?.image);
 
         // Setting About Data
         setAboutText1(response3?.data[0]?.text);
@@ -135,14 +138,14 @@ const Admin = () => {
   }, []);
 
   const uploadHandle = () => {
-    const folderName = "Past Gigs"; // Define the folder name
+    // const folderName = "Past Gigs"; // Define the folder name
 
     const uploads = pictures?.map((file) => {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", "adimbwct");
       formData.append("timestamp", Math.floor(Date.now() / 1000)); // Update timestamp logic
-      formData.append("folder", `swaraamusic/${folderName}`); // Include the folder path
+      // formData.append("folder", `swaraamusic/${folderName}`); // Include the folder path
 
       const URL = `https://api.cloudinary.com/v1_1/dzlpbjxhv/image/upload`;
       setIsLoading(true);
@@ -170,6 +173,37 @@ const Admin = () => {
         console.error("Error uploading images:", error);
       });
   };
+
+  // Handle the selected files
+  const handleSingleFileChange = (event) => {
+    // singleImage store
+    setSingleImage(event.target.files[0]);
+  };
+
+  const uploadSingleImage = () => {
+    console.log(singleImage, "singleImage");
+    const folderName = "Past Gigs"; // Define the folder name
+    const formData = new FormData();
+    formData.append("file", singleImage);
+    formData.append("upload_preset", "adimbwct");
+    formData.append("timestamp", Math.floor(Date.now() / 1000)); // Update timestamp logic
+    formData.append("folder", `swaraamusic/${folderName}`); // Include the folder path
+    const URL = `https://api.cloudinary.com/v1_1/dzlpbjxhv/image/upload`;
+    setIsLoading(true);
+    axios
+      .post(URL, formData)
+      .then((response) => {
+        const { data } = response;
+        const fileURL = data.secure_url;
+        setHomeImageUrl(fileURL);
+        setIsLoading(false);
+        window.location.reload(false);
+      })
+      .catch((error) => {
+        console.error("Error uploading image:", error);
+      });
+  };
+
   // Upload picture
   const uploadTestimonialHandle = async () => {
     try {
@@ -284,6 +318,7 @@ const Admin = () => {
     formData.append("homeText2", homeText2 ? homeText2 : "");
     formData.append("homeSubtitle2", homeSubtitle2 ? homeSubtitle2 : "");
     formData.append("homeTitle2", homeTitle2 ? homeTitle2 : "");
+    formData.append("image", homeImageUrl ? homeImageUrl : "");
 
     try {
       setIsLoading(true);
@@ -318,7 +353,7 @@ const Admin = () => {
             <button
               className="btn-burgundy"
               onClick={
-                password === "Ishaani123#"
+                password === "1"
                   ? // password === "Ishaani123#"
                     () => setSecurity(false)
                   : () => alert("Wrong Password")
@@ -614,6 +649,37 @@ const Admin = () => {
                   value={homeText2}
                   onChange={(e) => setHomeText2(e.target.value)}
                 ></textarea>
+              </div>
+
+              <div>
+                <label className="txt-header-purple">Home Bottom Image</label>
+
+                {homeImageUrl && (
+                  <img
+                    src={homeImageUrl}
+                    alt=""
+                    style={{ width: "30%", height: "auto" }}
+                  />
+                )}
+
+                <div style={{ width: "100%", height: "100%" }}>
+                  <h2 className="txt-description-black">Upload image</h2>
+
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleSingleFileChange}
+                  />
+                </div>
+                <div>
+                  <button
+                    className="btn-burgundy"
+                    onClick={() => uploadSingleImage()}
+                  >
+                    Upload Picture
+                  </button>
+                </div>
+                <div></div>
               </div>
             </div>
 

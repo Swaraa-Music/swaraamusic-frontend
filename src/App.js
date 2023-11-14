@@ -8,6 +8,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import Loadable from "react-loadable";
 
+
 // Components
 import WhatsApp from "./components/Utility/WhatsApp";
 import isEqual from "react-fast-compare";
@@ -31,6 +32,8 @@ const AsyncComponent = Loadable({
   loading: () => <div>loading...</div>,
   modules: ["myNamedChunk"],
 });
+
+
 
 function App() {
   useEffect(() => {
