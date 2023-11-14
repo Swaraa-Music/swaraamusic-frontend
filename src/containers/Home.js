@@ -22,8 +22,8 @@ const Home = () => {
   const history = useHistory();
 
   // States
-  const [testimonials, setTestimonials] = useState();
-  const [heroSliders, setHeroSliders] = useState();
+  const [testimonials, setTestimonials] = useState(null);
+  const [heroSliders, setHeroSliders] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [home, setHome] = useState([]);
 
@@ -95,6 +95,7 @@ const Home = () => {
                   <img
                     src={hero?.picture}
                     alt={hero?.picture}
+                    loading="lazy"
                     className="hero__img"
                   />
                 </div>
@@ -108,6 +109,7 @@ const Home = () => {
               // src={profile}
               alt="Swaraa Music Singer"
               style={{ width: "30%" }}
+              loading="lazy"
             />
             {/* <div className={"home_about_img"}>
 
@@ -136,6 +138,7 @@ const Home = () => {
                   src={home[1]?.image}
                   alt="Swaraa Music Singer"
                   style={{ width: "90%" }}
+                  loading="lazy"
                 />
               </div>
               <div className="">
