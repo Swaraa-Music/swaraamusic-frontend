@@ -49,14 +49,17 @@ const Videos = () => {
 
       <div className="videos__container">
         {data.items.map((video) => {
+          console.log(video, "video");
           return (
-            <iframe
-              src={`https://www.youtube.com/embed/${video.snippet.resourceId.videoId}`}
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+            video?.snippet?.title !== "Deleted video" && (
+              <iframe
+                src={`https://www.youtube.com/embed/${video.snippet.resourceId.videoId}`}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            )
           );
         })}
       </div>
