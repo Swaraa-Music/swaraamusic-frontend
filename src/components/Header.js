@@ -29,7 +29,6 @@ const Header = () => {
     fetchContact();
   }, []);
 
-
   return (
     <div className="header bg-pink-purple-gradient">
       <div className="header__logo__container">
@@ -93,17 +92,17 @@ const Header = () => {
         <div>
           <p>
             <a
-              href={`tel:${Number(contact[0]?.contact1)}`}
+              href={`tel:${contact[0]?.contact1}`}
               style={{ marginRight: "6px" }}
             >
-              {Number(contact[0]?.contact1)}
+              {contact[0]?.contact1}
             </a>
             or
             <a
-              href={`tel:${Number(contact[0]?.contact2)}`}
+              href={`tel:${contact[0]?.contact2}`}
               style={{ marginLeft: "6px" }}
             >
-              {Number(contact[0]?.contact2)}
+              {contact[0]?.contact2}
             </a>
           </p>
           <p>

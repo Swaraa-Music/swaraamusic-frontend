@@ -150,14 +150,14 @@ const Admin = () => {
   }, []);
 
   const uploadHandle = () => {
-    // const folderName = "Past Gigs"; // Define the folder name
+    const folderName = "Past Gigs"; // Define the folder name
 
     const uploads = pictures?.map((file) => {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", "adimbwct");
       formData.append("timestamp", Math.floor(Date.now() / 1000)); // Update timestamp logic
-      // formData.append("folder", `swaraamusic/${folderName}`); // Include the folder path
+      formData.append("folder", `swaraamusic/${folderName}`); // Include the folder path
 
       const URL = `https://api.cloudinary.com/v1_1/dzlpbjxhv/image/upload`;
       setIsLoading(true);
@@ -190,30 +190,6 @@ const Admin = () => {
   const handleSingleFileChange = (event) => {
     // singleImage store
     setSingleImage(event.target.files[0]);
-  };
-
-  const uploadSingleImage = () => {
-    console.log(singleImage, "singleImage");
-    const folderName = "Past Gigs"; // Define the folder name
-    const formData = new FormData();
-    formData.append("file", singleImage);
-    formData.append("upload_preset", "adimbwct");
-    formData.append("timestamp", Math.floor(Date.now() / 1000)); // Update timestamp logic
-    formData.append("folder", `swaraamusic/${folderName}`); // Include the folder path
-    const URL = `https://api.cloudinary.com/v1_1/dzlpbjxhv/image/upload`;
-    setIsLoading(true);
-    axios
-      .post(URL, formData)
-      .then((response) => {
-        const { data } = response;
-        const fileURL = data.secure_url;
-        setHomeImageUrl(fileURL);
-        setIsLoading(false);
-        window.location.reload(false);
-      })
-      .catch((error) => {
-        console.error("Error uploading image:", error);
-      });
   };
 
   // Upload picture
@@ -347,6 +323,30 @@ const Admin = () => {
   const handleFileChange = (event) => {
     const selectedFiles = event.target.files;
     setPicture([...selectedFiles]); // Assuming 'pictures' is a state variable
+  };
+
+  const uploadSingleImage = () => {
+    const folderName = "home"; // Define the folder name
+    const formData = new FormData();
+    formData.append("file", singleImage);
+    formData.append("upload_preset", "adimbwct");
+    formData.append("timestamp", Math.floor(Date.now() / 1000)); // Update timestamp logic
+    formData.append("folder", `swaraamusic/${folderName}`); // Include the folder path
+    const URL = `https://api.cloudinary.com/v1_1/dzlpbjxhv/image/upload`;
+    // setIsLoading(true);
+    axios
+      .post(URL, formData)
+      .then((response) => {
+        const { data } = response;
+        const fileURL = data.secure_url;
+        setHomeImageUrl(fileURL);
+        alert("Image is updated , Please now click Update Home Content button");
+        // setIsLoading(false);
+        // window.location.reload(false);
+      })
+      .catch((error) => {
+        console.error("Error uploading image:", error);
+      });
   };
 
   return isLoading ? (
