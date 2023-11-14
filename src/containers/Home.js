@@ -10,8 +10,6 @@ import logo from "../assets/img/logo_purple_transparent.png";
 import Loader from "../components/Utility/Loader";
 import Footer from "../components/Footer";
 
-import profile from "../assets/img/profile.jpg";
-
 // Meta
 import Metadecorator from "../components/Utility/MetaDecorators";
 import tags from "../assets/json/meta_tags/home.json";
@@ -19,7 +17,6 @@ import { API } from "../config";
 import isEqual from "react-fast-compare";
 import react from "react";
 import HomeTestimonials from "./HomeTestimonials";
-import { Helmet } from "react-helmet";
 
 const Home = () => {
   const history = useHistory();

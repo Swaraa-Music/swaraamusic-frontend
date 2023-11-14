@@ -20,6 +20,11 @@ const Admin = () => {
   const [data, setData] = useState("");
   const [data1, setData1] = useState("");
   const [testimonialId, setTestimonialId] = useState("");
+  // header contacts
+  const [header, setHeader] = useState({
+    contact1: "",
+    contact2: "",
+  });
 
   // Home page
   const [homeTitle1, setHomeTitle1] = useState("");
@@ -68,13 +73,14 @@ const Admin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [response, response1, response2, response3, response4] =
+        const [response, response1, response2, response3, response4, header] =
           await Promise.all([
             axios.get(`${API}/pictures`),
             axios.get(`${API}/testimonials`),
             axios.get(`${API}/pictures/hero`),
             axios.get(`${API}/abouts`),
             axios.get(`${API}/home`),
+            axios.get(`${API}/header`),
           ]);
 
         // need to new uploader first show
@@ -86,6 +92,12 @@ const Admin = () => {
 
         setData1(response1?.data);
         setTestimonialId(response1?.data[0]?._id);
+
+        // header contact
+        setHeader({
+          contact1: header?.data[0]?.contact1,
+          contact2: header?.data[0]?.contact2,
+        });
 
         // home page data
         setHomeText1(response4?.data[0]?.text || "");
@@ -353,7 +365,7 @@ const Admin = () => {
             <button
               className="btn-burgundy"
               onClick={
-                password === "1"
+                password === "Ishaani123#"
                   ? // password === "Ishaani123#"
                     () => setSecurity(false)
                   : () => alert("Wrong Password")
@@ -610,6 +622,53 @@ const Admin = () => {
                 Update Home Slider
               </button>
             </label>
+
+            <label className="txt-header-purple">Header Contacts</label>
+
+            <div className="txt-header-purple admin__about">
+              <div>
+                <div style={{ width: "100%", height: "100%" }}>
+                  <h2 className="txt-description-black">Contact 1</h2>
+                  <input
+                    type="text"
+                    value={header.contact1}
+                    onChange={(e) =>
+                      setHeader({ ...header, contact1: e.target.value })
+                    }
+                  />
+                </div>
+                <div style={{ width: "100%", height: "100%" }}>
+                  <h2 className="txt-description-black">Contact 2</h2>
+                  <input
+                    type="text"
+                    value={header.contact2}
+                    onChange={(e) =>
+                      setHeader({ ...header, contact2: e.target.value })
+                    }
+                  />
+                </div>
+
+                <button
+                  className="btn-burgundy"
+                  onClick={() => {
+                    setIsLoading(true);
+                    axios
+                      .post(`${API}/header/update`, header)
+                      .then((res) => {
+                        setIsLoading(false);
+                        alert("Header Contacts Updated!");
+                        window.location.reload(false);
+                      })
+                      .catch((err) => {
+                        alert(err);
+                      });
+                  }}
+                >
+                  Update Header Contacts
+                </button>
+              </div>
+            </div>
+
             <label className="txt-header-purple">Home page</label>
             <div className="txt-header-purple admin__about">
               <div>

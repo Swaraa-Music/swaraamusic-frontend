@@ -3,14 +3,33 @@ import logo from "../assets/img/logo_white_transparent.png";
 
 // Packages
 import { Link, useLocation, useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { API } from "../config";
 
 const Header = () => {
   const location = useLocation();
   const history = useHistory();
 
+  const [contact, setContact] = useState({});
+
   // States
   const [modal, setModal] = useState(false);
+
+  useEffect(() => {
+    const fetchContact = async () => {
+      try {
+        const res = await axios.get(`${API}/header`);
+        setContact(res?.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchContact();
+  }, []);
+
+
   return (
     <div className="header bg-pink-purple-gradient">
       <div className="header__logo__container">
@@ -73,9 +92,18 @@ const Header = () => {
         />
         <div>
           <p>
-            <a href="tel:07866 366 197">07866 366 197</a> or
-            <a href="tel:07944 587 606" style={{ marginLeft: "6px" }}>
-              07944 587 606
+            <a
+              href={`tel:${Number(contact[0]?.contact1)}`}
+              style={{ marginRight: "6px" }}
+            >
+              {Number(contact[0]?.contact1)}
+            </a>
+            or
+            <a
+              href={`tel:${Number(contact[0]?.contact2)}`}
+              style={{ marginLeft: "6px" }}
+            >
+              {Number(contact[0]?.contact2)}
             </a>
           </p>
           <p>
