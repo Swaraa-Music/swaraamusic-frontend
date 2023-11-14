@@ -48,13 +48,13 @@ const About = () => {
         tags={tags.tags}
       />
       {about?.map((item, i) => {
-        // console.log(item);
+      
         return (
           // item._id === "61b35cc66805e98e15cef301" && (
           <>
             {item?.title && (
-              <div className="about__container">
-                <img src={logo} alt={logo} data-aos="fade" />
+              <div className="about__container" key={i}>
+                <img src={logo} alt={logo} data-aos="fade" loading="lazy" />
                 {/* <h1 className="txt-header-purple">{item?.title}</h1> */}
                 {i === 0 && (
                   <h1 className="txt-header-purple">{item?.title}</h1>

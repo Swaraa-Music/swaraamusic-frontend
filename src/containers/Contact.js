@@ -1,5 +1,5 @@
 // Packages
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 // Components
@@ -23,6 +23,21 @@ const Contact = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSent, setIsSent] = useState(false);
+
+  const [contact, setContact] = useState({});
+
+  useEffect(() => {
+    const fetchContact = async () => {
+      try {
+        const res = await axios.get(`${API}/header`);
+        setContact(res?.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchContact();
+  }, []);
 
   // Contact Submiy Handle
 
@@ -89,8 +104,9 @@ const Contact = () => {
         <div className="contact__info">
           <h1 className="txt-description-black">Phone : </h1>
           <p>
-            <a href="tel:07866 366 197">07866 366 197</a> <span>or</span>{" "}
-            <a href="tel:07944 587 606">07944 587 606</a>
+            <a href={`tel:${contact[0]?.contact1}`}>07866 366 197</a>{" "}
+            <span>or</span>{" "}
+            <a href={`tel:${contact[0]?.contact2}`}>07944 587 606</a>
           </p>
           <h1 className="txt-description-black">Email :</h1>
           <p>

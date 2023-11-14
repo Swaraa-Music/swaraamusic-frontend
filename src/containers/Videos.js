@@ -48,7 +48,7 @@ const Videos = () => {
       </div>
 
       <div className="videos__container">
-        {data.items.map((video) => {
+        {data?.items?.map((video) => {
           return (
             video?.snippet?.title !== "Deleted video" && (
               <iframe
