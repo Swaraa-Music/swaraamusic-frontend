@@ -632,6 +632,7 @@ const Admin = () => {
                   <input
                     type="text"
                     value={header.contact1}
+                    maxlength="11"
                     onChange={(e) =>
                       setHeader({ ...header, contact1: e.target.value })
                     }
@@ -642,6 +643,7 @@ const Admin = () => {
                   <input
                     type="text"
                     value={header.contact2}
+                    maxlength="11"
                     onChange={(e) =>
                       setHeader({ ...header, contact2: e.target.value })
                     }
