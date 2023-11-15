@@ -97,7 +97,7 @@ const Home = ({ testimonials, heroSliders, home }) => {
               <button
                 data-aos="fade"
                 className="btn-burgundy"
-                onClick={() => history.push("/about")}
+                onClick={() => history.push("/contact")}
               >
                 Get a Quote
               </button>
@@ -125,7 +125,7 @@ const Home = ({ testimonials, heroSliders, home }) => {
               <button
                 data-aos="fade"
                 className="btn-burgundy"
-                onClick={() => history.push("/about")}
+                onClick={() => history.push("/contact")}
               >
                 Get a Quote
               </button>
