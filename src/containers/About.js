@@ -33,10 +33,15 @@ const About = () => {
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
+        setIsLoading(false);
       }
     };
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>

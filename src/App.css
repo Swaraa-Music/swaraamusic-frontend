@@ -1498,3 +1498,16 @@ body {
   background-image: url("./assets/img/x.png") !important;
   margin-right: 10px !important;
 }
+
+@media screen and (max-width: 600px) {
+  .mobile_testimonial {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 50px 30px 40px 30px;
+  }
+
+  .mobile_testimonial h1 {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}

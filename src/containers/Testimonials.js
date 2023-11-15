@@ -30,19 +30,21 @@ const Testimonials = () => {
   return isLoading ? (
     <Loader />
   ) : (
-    <div className="testimonials">
-      {data.map((testimonial, index) => {
-        return (
-          <div className="testimonial">
-            <h1>" {testimonial.testimonial} "</h1>
-            <h2>{testimonial.author}</h2>
-            <h3>{testimonial.event}</h3>
-            <img src={stars} alt={stars} />
-          </div>
-        );
-      })}
+    <>
+      <div className="testimonials mobile_testimonial">
+        {data.map((testimonial, index) => {
+          return (
+            <div className="testimonial">
+              <h1>" {testimonial.testimonial} "</h1>
+              <h2>{testimonial.author}</h2>
+              <h3>{testimonial.event}</h3>
+              <img src={stars} alt={stars} />
+            </div>
+          );
+        })}
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

@@ -25,7 +25,6 @@ const responsive = {
 };
 
 const HomeTestimonials = ({ testimonials }) => {
-  console.log(testimonials, "testimonials");
   return (
     <div className="home_testimonials_bg">
       <Carousel

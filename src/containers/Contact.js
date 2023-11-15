@@ -69,27 +69,6 @@ const Contact = () => {
       setErrorMessage("Unknown Problem");
       setIsLoading(false);
     }
-
-    // try {
-    //   setIsLoading(true);
-    //   const formData = new FormData();
-    //   formData.append("from", from);
-    //   formData.append("fullName", fullName);
-    //   formData.append("subject", subject);
-    //   formData.append("message", message);
-    //   formData.append("phone", phone);
-    //   const response = await axios.post(`${API}/mail/contact`, formData);
-    //   if (response.data === "Email sent!") {
-    //     setIsSent(true);
-    //     setIsLoading(false);
-    //   } else {
-    //     setErrorMessage(response.data.error);
-    //     setIsLoading(false);
-    //   }
-    // } catch (error) {
-    //   setErrorMessage("Unknown Problem");
-    //   setIsLoading(false);
-    // }
   };
 
   return (

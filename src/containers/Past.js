@@ -11,7 +11,7 @@ import isEqual from "react-fast-compare";
 const Past = () => {
   // States
   const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [modal, setModal] = useState(false);
   const [modalInfo, setModalInfo] = useState();
   // Fetch pictures
@@ -23,7 +23,7 @@ const Past = () => {
           (a, b) => new Date(b.created_at) - new Date(a.created_at)
         );
         setData(sortedData);
-        // setIsLoading(false);
+        setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
@@ -35,6 +35,11 @@ const Past = () => {
     setModalInfo(props.info);
     setModal(true);
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <>
       <div className="past">
