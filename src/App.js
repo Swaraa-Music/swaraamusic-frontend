@@ -7,7 +7,7 @@ import React, { Suspense, useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Loadable from "react-loadable";
-
+import { Helmet } from "react-helmet";
 
 // Components
 import WhatsApp from "./components/Utility/WhatsApp";
@@ -33,14 +33,17 @@ const AsyncComponent = Loadable({
   modules: ["myNamedChunk"],
 });
 
-
-
 function App() {
   useEffect(() => {
     Aos.init({ duration: 800 });
   }, []);
   return (
     <Suspense fallback={null}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Swaraa Music</title>
+        <link rel="canonical" href="https://www.swaraamusic.com/" />
+      </Helmet>
       <Router>
         <AsyncComponent />
         <WhatsApp />

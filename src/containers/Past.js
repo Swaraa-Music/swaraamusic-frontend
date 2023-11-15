@@ -11,7 +11,7 @@ import isEqual from "react-fast-compare";
 const Past = () => {
   // States
   const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [modal, setModal] = useState(false);
   const [modalInfo, setModalInfo] = useState();
   // Fetch pictures
@@ -23,7 +23,7 @@ const Past = () => {
           (a, b) => new Date(b.created_at) - new Date(a.created_at)
         );
         setData(sortedData);
-        setIsLoading(false);
+        // setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
@@ -35,32 +35,33 @@ const Past = () => {
     setModalInfo(props.info);
     setModal(true);
   };
-  return isLoading ? (
-    <Loader />
-  ) : (
-    <div className="past">
-      {modal && (
-        <div className="past__modal">
-          <p onClick={() => setModal(false)}>X</p>
-          <img src={modalInfo} alt={modalInfo} />
-        </div>
-      )}
-      <div className="past__container">
-        {data.map((img) => {
-          return (
-            <div>
-              {" "}
-              <img
-                src={img.url}
-                alt={img.public_id}
-                onClick={() => modalHandle({ info: img.url })}
-              />
-            </div>
-          );
-        })}
+  return (
+    <>
+      <div className="past">
+        {modal && (
+          <div className="past__modal">
+            <p onClick={() => setModal(false)}>X</p>
+            <img src={modalInfo} alt={modalInfo} />
+          </div>
+        )}
+        {data?.length !== 0 && (
+          <div className="past__container">
+            {data?.map((img) => {
+              return (
+                <div>
+                  <img
+                    src={img?.url}
+                    alt={img?.public_id}
+                    onClick={() => modalHandle({ info: img?.url })}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        )}
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

@@ -8,6 +8,10 @@ const MetaDecorator = ({ title, description, tags }) => {
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={tags} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={"/logo192.png"} />
+      <meta name="twitter:card" content="summary_large_image" />
     </Helmet>
   );
 };
