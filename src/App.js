@@ -16,18 +16,7 @@ import axios from "axios";
 import { API } from "./config";
 import Loader from "./components/Utility/Loader";
 
-// const Home = React.lazy(() => import("./containers/Home"));
-// const About = React.lazy(() => import("./containers/About"));
-// const Gallery = React.lazy(() => import("./containers/Gallery"));
-// const Videos = React.lazy(() => import("./containers/Videos"));
 const Contact = React.lazy(() => import("./containers/Contact"));
-// const Admin = React.lazy(() => import("./containers/Admin"));
-// const Events = React.lazy(() => import("./containers/Events"));
-// const Past = React.lazy(() => import("./containers/Past"));
-// const Testimonials = React.lazy(() => import("./containers/Testimonials"));
-// const VideoTestimonials = React.lazy(() =>
-//   import("./containers/VideoTestimonials")
-// );
 
 const AsyncComponent = Loadable({
   loader: () =>
@@ -135,7 +124,7 @@ function App() {
     <Suspense fallback={null}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Swaraa Music</title>
+        <title>Swaraa Music - home</title>
         <link rel="canonical" href="https://www.swaraamusic.com/" />
       </Helmet>
       <Router>

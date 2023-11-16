@@ -84,7 +84,7 @@ const Header = () => {
 
         <img
           src={logo}
-          alt="Swaraa Music Logo"
+          alt="Swaraa Music - home"
           className="header__logo"
           data-aos="fade"
           onClick={() => history.push("/")}
