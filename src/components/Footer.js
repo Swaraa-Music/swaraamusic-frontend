@@ -49,7 +49,7 @@ const Footer = () => {
             </svg>
           </a>
           <a
-            href="https://twitter.com/swaraamusiclive"
+            href="https://twitter.com/swaramusic"
             target="_blank"
             rel="noreferrer"
           >
