@@ -47,7 +47,7 @@ const Header = () => {
             <i className="fab fa-facebook"></i>
           </a>
           <a
-            href="https://www.instagram.com/swaraamusiclive/?hl=fr"
+            href="https://www.instagram.com/swaraamusiclive"
             target="_blank"
             rel="noreferrer"
           >
