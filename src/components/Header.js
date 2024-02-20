@@ -6,7 +6,6 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API } from "../config";
-import { Helmet } from "react-helmet";
 
 const Header = () => {
   const location = useLocation();
@@ -32,11 +31,6 @@ const Header = () => {
 
   return (
     <div className="header bg-pink-purple-gradient">
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Swaraa Music - home</title>
-        <link rel="canonical" href="https://www.swaraamusic.com/" />
-      </Helmet>
       <div className="header__logo__container">
         <div>
           <a

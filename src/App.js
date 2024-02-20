@@ -122,11 +122,6 @@ function App() {
 
   return (
     <Suspense fallback={null}>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Swaraa Music - home</title>
-        <link rel="canonical" href="https://www.swaraamusic.com/" />
-      </Helmet>
       <Router>
         <AsyncComponent />
         <WhatsApp />
