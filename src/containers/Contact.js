@@ -53,7 +53,7 @@ const Contact = () => {
       };
 
       emailjs
-        .send("service_ibvw0og", "template_jcq7ggt", data, "SqbT2VloJb0NTjUDb")
+        .send("service_elfcbhh", "template_jcq7ggt", data, "SqbT2VloJb0NTjUDb")
         .then(
           (result) => {
             console.log(result.text);
